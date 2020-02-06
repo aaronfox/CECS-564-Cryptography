@@ -35,7 +35,9 @@ def permutation_distribution_solver_util(array, index, num, reduced_num):
             array, index + 1, num, reduced_num - i)
 
 
-n = 7
+# JUST CHANGE N HERE FOR FIGURING OUT THE DISTRIBUTION AND COUNTS
+# The main number to figure out the factorial from is n:
+n = 12
 arr = [0] * n
 permutation_distribution_solver_util(arr, 0, n, n)
 # print(str(list_of_viable_perms))
@@ -50,8 +52,10 @@ for l in list_of_viable_perms:
     print("for l == " + str(l))
     this_l_mult = 1
     this_n = n
-    # TODO: Must account for dividing by duplicate cycle counts such as 2, 2, 1 in Psub5
-    # and 3, 3, 1 in Psub7
+    # Must account for dividing by factorial amount of duplicate
+    # cycle counts such as dividing by 2! for 2, 2, 1 in Psub5
+    # and by 3! for 2, 2, 2, 1 in Psub7
+    # TODO: Keep list of all the numbers to divide by in case there are multiple duplicates
     occurrences = {}
     for element in l:
         if element not in occurrences and element is not 1:
@@ -60,9 +64,11 @@ for l in list_of_viable_perms:
             occurrences[element] = occurrences[element] + 1
     print("occurrences == " + str(occurrences))
     number_to_divide_by = 1
+    numbers_to_factorial_divide_by = []
     for value in occurrences.values():
-        i
         number_to_divide_by = number_to_divide_by * value
+        if value > 1:
+            numbers_to_factorial_divide_by.append(value)
 
     for i in l:
         temp_i = i
@@ -84,12 +90,25 @@ for l in list_of_viable_perms:
         this_l_mult = this_l_mult * this_i_mult
         print("running total_l_mult == " + str(this_l_mult))
 
+    # TODO: Uncomment or remove
+    # # number_to_divide_by should actually be the factorial of the reoccurring numbers
+    # for i in range(number_to_divide_by - 1, 1, -1):
+    #     number_to_divide_by = number_to_divide_by * i
+
+    # TODO: Remove or remove upper TODO
     # number_to_divide_by should actually be the factorial of the reoccurring numbers
     for i in range(number_to_divide_by - 1, 1, -1):
         number_to_divide_by = number_to_divide_by * i
 
-    running_value = running_value + this_l_mult / number_to_divide_by
-    viable_perms_and_values[str(l[::-1])] = this_l_mult / number_to_divide_by
+    running_divide_by_num = 1
+    for number_to_divide_byx in numbers_to_factorial_divide_by:
+        for i in range(number_to_divide_byx - 1, 1, -1):
+            number_to_divide_byx = number_to_divide_byx * i
+        running_divide_by_num = running_divide_by_num * number_to_divide_byx
+        
+
+    running_value = running_value + this_l_mult / running_divide_by_num#number_to_divide_by
+    viable_perms_and_values[str(l[::-1])] = this_l_mult / running_divide_by_num#number_to_divide_by
     # else: 
     #     running_value = running_value + 1
     print("running value == " + str(running_value))
