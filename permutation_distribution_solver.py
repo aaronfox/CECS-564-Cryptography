@@ -84,8 +84,12 @@ for l in list_of_viable_perms:
         this_l_mult = this_l_mult * this_i_mult
         print("running total_l_mult == " + str(this_l_mult))
 
+    # number_to_divide_by should actually be the factorial of the reoccurring numbers
+    for i in range(number_to_divide_by - 1, 1, -1):
+        number_to_divide_by = number_to_divide_by * i
+
     running_value = running_value + this_l_mult / number_to_divide_by
-    viable_perms_and_values[str(l)] = this_l_mult / number_to_divide_by
+    viable_perms_and_values[str(l[::-1])] = this_l_mult / number_to_divide_by
     # else: 
     #     running_value = running_value + 1
     print("running value == " + str(running_value))
