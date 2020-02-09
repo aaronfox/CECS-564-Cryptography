@@ -37,7 +37,7 @@ def permutation_distribution_solver_util(array, index, num, reduced_num):
 
 # JUST CHANGE N HERE FOR FIGURING OUT THE DISTRIBUTION AND COUNTS
 # The main number to figure out the factorial from is n:
-n = 12
+n = 4
 arr = [0] * n
 permutation_distribution_solver_util(arr, 0, n, n)
 # print(str(list_of_viable_perms))
@@ -55,7 +55,7 @@ for l in list_of_viable_perms:
     # Must account for dividing by factorial amount of duplicate
     # cycle counts such as dividing by 2! for 2, 2, 1 in Psub5
     # and by 3! for 2, 2, 2, 1 in Psub7
-    # TODO: Keep list of all the numbers to divide by in case there are multiple duplicates
+    # Keep list of all the numbers to divide by in case there are multiple duplicates
     occurrences = {}
     for element in l:
         if element not in occurrences and element is not 1:
