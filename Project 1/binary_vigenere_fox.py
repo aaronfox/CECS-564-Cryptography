@@ -4,6 +4,8 @@
 # Dr. Desoky
 
 # encrypt_vigenere
+# NOTE: This uses Windows-1252 Extended ASCII Encoding
+# Standard encodings are referenced here: https://docs.python.org/2.4/lib/standard-encodings.html
 # INPUT: text_file_path: (string) filepath of text file
 # OUTPUT: Encrypted .txt file that is saved to the current folder
 def encrypt_vigenere(text_file_path, key):
@@ -15,17 +17,37 @@ def encrypt_vigenere(text_file_path, key):
 
     index = 0
     encrypted_text = []
+    # m is the key length, as specified by the Project 2 prompt formula
+    m = len(key)
     # Encrypt file here
     while index < len(text):
         # Append encrypted text into large array of characters
-        encrypted_text.append(text[index])
+        
+        ascii_value = bytes(text[index], encoding='windows-1252').encode('windows-1252') 
+        key_value = bytes(key[index % m], encoding='windows-1252').decode('windows-1252')
+        print('ascii_value == ' + str(ascii_value))
+        # value = (ascii_value + key_value) % 256
+        # encrypted_text.append(chr(ascii_value))
+        print('ascii_value == ' + str(ascii_value))
+        # Debugging:
+        print('bytes(text[index], encoding=\'windows-1252\') == ' + str(bytes(text[index], encoding='windows-1252')))
+        # print('text[index] == ' + str(text[index]))
+        # print('ord(text[index].decode(\'windows-1252\') == ' + str(ord(text[index]).decode('windows-1252')))
+        # print('ord(key[index % m].decode(\'windows-1252\') == ' + str(ord(key[index % m]).decode('windows-1252')))
+        # print('ascii_value % 256 == ' +
+        #       str((ord(text[index]).decode('windows-1252') + ord(key[index % m]).decode('windows-1252')) % 256))
+        # print('chr(ascii_value).encode(\'windows-1252\') == ' + chr(ascii_value).encode('windows-1252'))
+
         # Increment index each time to continue encrypting
         index = index + 1
+
+    
+    # Encrypt text using vigenere method
     
     # Join encrypted characters into one string
     print(''.join(encrypted_text))
 
-    # 
+    # Encrypt string using 
 
 if __name__== "__main__":
     print("Encrypting text using Vigenere enccryption...")
