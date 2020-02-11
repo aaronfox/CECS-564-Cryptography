@@ -30,7 +30,7 @@ def encrypt_vigenere(text_file_path, key):
     m = len(key)
 
     # Encrypt file here
-    encrypted_file = open("fox_encrypted_vigenere_file.txt", "w", encoding='windows-1252')
+    encrypted_file = open("fox_encrypted_vigenere_file.txt", "w", encoding="utf-8")
     while index < len(text):
         # Append encrypted text into large array of characters
         
@@ -40,7 +40,7 @@ def encrypt_vigenere(text_file_path, key):
         key_value = ord(key[index % m])
         encrypted_value = (ascii_value + key_value) % 256
 
-        # Can use this for loop to show that the windows-1252 encoding is being used here
+        # Can use this for loop to show that the proper encoding is being used here
         # for i in range(256):
         #     print("chr(" + str(i) + ") == " + chr(i))
         
@@ -51,22 +51,11 @@ def encrypt_vigenere(text_file_path, key):
         print('encrypted_value == ' + str(encrypted_value))
         print("chr(" + str(encrypted_value) + ") == " + chr(encrypted_value))
         encrypted_text.append(chr(encrypted_value))
-        # Debugging:
-        # print('bytes(text[index], encoding=\'windows-1252\') == ' + str(bytes(text[index], encoding='windows-1252')))
-        # print('text[index] == ' + str(text[index]))
-        # print('ord(text[index].decode(\'windows-1252\') == ' + str(ord(text[index]).decode('windows-1252')))
-        # print('ord(key[index % m].decode(\'windows-1252\') == ' + str(ord(key[index % m]).decode('windows-1252')))
-        # print('ascii_value % 256 == ' +
-        #       str((ord(text[index]).decode('windows-1252') + ord(key[index % m]).decode('windows-1252')) % 256))
-        # print('chr(ascii_value).encode(\'windows-1252\') == ' + chr(ascii_value).encode('windows-1252'))
 
         # Increment index each time to continue encrypting
         index = index + 1
         # Place value into output file
-        # print('chr(encrypted_value).encode(\'windows-1252\') == ' + str(chr(encrypted_value).encode('windows-1252')))
-        # test = chr(encrypted_value).encode('windows-1252')
-        # print("test == " + str(test.decode('windows-1252')))
-        # encrypted_file.write(test.decode('windows-1252'))
+        encrypted_file.write(chr(encrypted_value))
 
     encrypted_file.close()
     # Encrypt text using vigenere method
