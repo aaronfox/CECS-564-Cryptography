@@ -1,3 +1,2 @@
-+ str(ascii_value))
-        # print('key_value == ' + str(key_value))
-        # print('encrypted_val
+windows-1252')
+        # print("test == " + str(test.decode(
