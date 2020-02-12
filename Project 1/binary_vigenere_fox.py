@@ -93,12 +93,60 @@ def decrypt_vigenere(filepath_of_encrypted, key, output_file_name):
 
     decrypted_text_file.close()
     print("Successfully decrypted text. It is stored in " + str(os.getcwd()) + "\\" + str(output_file_name))
-        
 
+# get_probability_density_of_text gets the probability density function of a typical text file
+# OUTPUT: probabilities_dict (dict): A dictionary containing the each extended ASCII character and the frequency of occuring
+def get_probability_density_of_text(filepath_of_text_to_get_pdf_from):
+    print("Getting PDF of text...")
+    text_file = open(filepath_of_text_to_get_pdf_from, "r", encoding="utf-8")
+
+    # Build out each character in Z_256 of probabilities dictionary with a count of 0 initially
+    probabilities_dict = {}
+    for i in range(0, 256):
+        probabilities_dict[chr(i)] = 0
+
+    # Record total number of characters for calculating the probability distribution 
+    total_number_of_characters = 0
+    while True:
+        # Read one character at a time
+        char = text_file.read(1)
+        if not char:
+            break
+        if char in probabilities_dict:
+            probabilities_dict[char] = probabilities_dict[char] + 1
+            total_number_of_characters = total_number_of_characters + 1
+        else:
+            print("Skipping character " + str(char) + ", because it is not in the extended ASCII table")
+
+    # For debugging
+    print("probabilities_dict == " + str(probabilities_dict))
+
+    # Get percentage of each characters usage
+    for i in range(0, 256):
+        probabilities_dict[chr(i)] = probabilities_dict[chr(i)] / total_number_of_characters
+
+    print("probabilities_dict == " + str(probabilities_dict))
+
+
+           
+
+# attack_vigenere_cipher attacks the text of a file encrypted with the Vigenere cipher
+def attack_vigenere_cipher(filepath_of_encrypted_file):
+    print("Attacking file encrypted with Vigenere cipher...")
 
 if __name__== "__main__":
+    # Encrypting file
     file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
     encryption_key='pineapple'
     encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
+
+    # Decrypting file
     encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\fox_encrypted_vigenere_file.txt"
     decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_text.txt")
+
+    # Obtaining probability distribution of a typical text
+    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    get_probability_density_of_text(typical_text)
+    # Attacking encrypted file
+
+
