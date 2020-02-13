@@ -12,6 +12,8 @@
 
 # For directory usage (os.getcwd)
 import os
+# For graphing frequency distributions
+import matplotlib.pyplot as plt
 
 # encrypt_vigenere encrypts the text in a given filepath and outputs it to the given filepath
 # NOTE: This uses the first 256 characters of UTF-8, which is equivalent 
@@ -23,29 +25,40 @@ def encrypt_vigenere(text_file_path, key, output_file_name):
     print("Encrypting text using Vigenere encryption...")
     # Open ASCII text file for reading based on input path
     text_file = open(text_file_path, 'r', encoding='utf-8') # windows-1252 is extended ascii 256
-    # Read all info
-    text = text_file.read()
+    # Read all info of  extended ASCII characters only
+    # text = text_file.read()
+    text = []
+    i = 0
+    while True:
+        # Read one character at a time, including only chars of first 256 characters
+        char = text_file.read(1)
+        if not char:
+            break
+        if ord(char) > 0 and ord(char) < 256:
+            text.append(char)
+        else:
+            print("Excluding char " + str(char) + " from reading of input file because its not in ASCII-256")
+        i = i + 1
     text_file.close()
 
     index = 0
-    encrypted_text = []
-    # m is the key length, as specified by the Project 2 prompt formula
+    # m is the key length, as specified by the Project 1 prompt formula
     m = len(key)
 
     # Encrypt file here
     encrypted_file = open(output_file_name, "w", encoding="utf-8")
     while index < len(text):
-        # Append encrypted text into large array of characters
-        
         # Yi = (Xi + Ki % m) % 256
         X_i = ord(text[index])
         K_i = ord(key[index % m])
         Y_i = (X_i + K_i) % 256
-
-        # Can use this for loop to show that the proper encoding is being used here
-        # for i in range(256):
-        #     print("chr(" + str(i) + ") == " + chr(i))
         
+
+        # Increment index each time to continue encrypting
+        index = index + 1
+        # Place value into output file
+        encrypted_file.write(chr(Y_i))
+
         # Debugging (Uncomment for testing purposes)
         # print('X_i == ' + str(X_i))
         # print('K_i == ' + str(K_i))
@@ -53,17 +66,8 @@ def encrypt_vigenere(text_file_path, key, output_file_name):
         # print("chr(" + str(Y_i) + ") == " + chr(Y_i))
         # encrypted_text.append(chr(Y_i))
 
-        # Increment index each time to continue encrypting
-        index = index + 1
-        # Place value into output file
-        encrypted_file.write(chr(Y_i))
-
     encrypted_file.close()
     print("Successfully encrypted text. It is stored in " + str(os.getcwd()) + "\\" + str(output_file_name))
-    # Encrypt text using vigenere method
-    
-    # Join encrypted characters into one string
-    # print(''.join(encrypted_text))
 
 
 # Decrypt the text found in the filepath of filepath_of_encrypted based on the Vigenere Cipher
@@ -94,6 +98,22 @@ def decrypt_vigenere(filepath_of_encrypted, key, output_file_name):
     decrypted_text_file.close()
     print("Successfully decrypted text. It is stored in " + str(os.getcwd()) + "\\" + str(output_file_name))
 
+# graph_probability_of_each_character plots a probability bar chart of each character in a text
+# INPUT: dictionary (dict): key: letter, value: probability
+# OUTPUT: None, just displays a graph
+def graph_probability_of_each_character(probabilities_dict):
+    # Display bar chart of probabilities of each letter, ignoring characters that aren't in text
+    plotting_values = {}
+    for key, val in probabilities_dict.items():
+        if val != 0:
+            plotting_values[key] = val
+
+    plt.bar(plotting_values.keys(), plotting_values.values())
+    plt.xlabel('Character')
+    plt.ylabel('Probability')
+    plt.title('Probability of each character in a typical Text file')
+    plt.show()
+
 # get_probability_density_of_text gets the probability density function of a typical text file
 # OUTPUT: probabilities_dict (dict): A dictionary containing the each extended ASCII character and the frequency of occuring
 def get_probability_density_of_text(filepath_of_text_to_get_pdf_from):
@@ -118,16 +138,12 @@ def get_probability_density_of_text(filepath_of_text_to_get_pdf_from):
         else:
             print("Skipping character " + str(char) + ", because it is not in the extended ASCII table")
 
-    # For debugging
-    print("probabilities_dict == " + str(probabilities_dict))
-
     # Get percentage of each characters usage
     for i in range(0, 256):
         probabilities_dict[chr(i)] = probabilities_dict[chr(i)] / total_number_of_characters
 
-    print("probabilities_dict == " + str(probabilities_dict))
-
-
+    graph_probability_of_each_character(probabilities_dict)
+    
            
 
 # attack_vigenere_cipher attacks the text of a file encrypted with the Vigenere cipher
@@ -137,6 +153,7 @@ def attack_vigenere_cipher(filepath_of_encrypted_file):
 if __name__== "__main__":
     # Encrypting file
     file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
+    # file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
     encryption_key='pineapple'
     encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
 
@@ -148,5 +165,4 @@ if __name__== "__main__":
     typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
     get_probability_density_of_text(typical_text)
     # Attacking encrypted file
-
 
