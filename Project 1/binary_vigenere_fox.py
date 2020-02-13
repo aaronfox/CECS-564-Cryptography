@@ -112,17 +112,52 @@ def graph_probability_of_each_character(probabilities_dict):
     plt.xlabel('Character')
     plt.ylabel('Probability')
     plt.title('Probability of each character in a typical Text file')
-    plt.show()
+    # plt.show()
 
 
 # get_index_of_coincidence returns the index of coincence IOC) of a text
-def get_index_of_coincidence(text, count_of_each_letter_dict):
+def get_index_of_coincidence(text):
+    # Calculate frequency of each char
+    char_frequency = {}
+    for i in range(255):
+        char_frequency[chr(i)] = 0
+
+    for char in text:
+        char_frequency[char] = char_frequency[char] + 1
+
     sum = 0
     N = len(text)
-    for key in count_of_each_letter_dict.keys():
-        sum = sum + (count_of_each_letter_dict[key] * (count_of_each_letter_dict[key] - 1))
+    for key in char_frequency.keys():
+        sum = sum + (char_frequency[key] * (char_frequency[key] - 1))
 
     return sum / (N * (N - 1))
+
+
+# get_multiple_iocs gets multiple iocs from the text based on various sizes of keywords
+# e.g. get every second letter, every third letter, every fourth letter
+# and determine how that influences the IOC
+# INPUT: num_to_stop (int): number to stop checking of every nth letter to slice out
+#        text (string): text to analyze the IOCs from
+# OUTPUT: iocs (list): ordered list of IOCs from 2 to num_to_stop
+def get_multiple_iocs(num_to_stop, text):
+    iocs = []
+    for i in range(2, num_to_stop):
+        new_text = []
+        for i in range(0, len(text), i):
+            new_text.append(text[i])
+
+        ioc = get_index_of_coincidence(''.join(new_text))
+        iocs.append(ioc)
+    return iocs
+
+# graph_iocs simply graphs out the iocs
+def graph_iocs(iocs):
+    x = list(range(2, 2 + len(iocs)))
+    plt.bar(x, iocs)
+    plt.xlabel('Assumed Key Length')
+    plt.ylabel('IOC')
+    plt.title('IOCs of Assumed Key Lengths')
+    plt.show()
 
 
 # get_probability_dist_of_text gets the probability density function of a typical text file
@@ -159,7 +194,7 @@ def get_probability_dist_of_text(filepath_of_text_to_get_pdf_from):
     for i in range(0, 256):
         probabilities_dict[chr(i)] = probabilities_dict[chr(i)] / total_number_of_characters
 
-    graph_probability_of_each_character(probabilities_dict)
+    # graph_probability_of_each_character(probabilities_dict)
 
     return [probabilities_dict, letter_count_dict]
     
@@ -183,10 +218,14 @@ if __name__== "__main__":
     encryption_key = "cthulhu"
     decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_text.txt")
 
-    # # Obtaining probability distribution of a typical text
-    # typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
-    # [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(typical_text)
+    # Obtaining probability distribution of a typical text
+    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(typical_text)
     # # Attacking encrypted file
-    # ioc = get_index_of_coincidence(unencrypted_text, letter_count_dict)
-    # print("ioc == " + str(ioc))
+    ioc = get_index_of_coincidence(unencrypted_text)
+    print("ioc == " + str(ioc))
+
+    multiple_iocs = get_multiple_iocs(64, encrypted_text)
+    graph_iocs(multiple_iocs)
+
 
