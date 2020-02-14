@@ -14,6 +14,8 @@
 import os
 # For graphing frequency distributions
 import matplotlib.pyplot as plt
+# For math.floor
+import math
 
 # encrypt_vigenere encrypts the text in a given filepath and outputs it to the given filepath
 # NOTE: This uses the first 256 characters of latin1, which is equivalent 
@@ -198,7 +200,32 @@ def get_probability_dist_of_text(filepath_of_text_to_get_pdf_from):
 
     return [probabilities_dict, letter_count_dict]
     
-           
+# break_caesar_cipher uses the Chi-squared method to help determine the lowest Chi-squared
+# value which should correspond to the value which should crack the given cipher
+# NOTE: For project 1, it is assumed that the key is only of lowercase alphabetic letters
+def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
+    text_to_be_evaluated = []
+    for i in range(math.floor(len(encrypted_text) / key_length)):
+        text_to_be_evaluated.append(encrypted_text[i * key_length + starting_letter_index])
+
+    
+    text_to_be_evaluated = ''.join(text_to_be_evaluated)
+    print("text_to_be_evaluated == " + str(text_to_be_evaluated))
+
+    # Get chi-squared values of all sequences
+    # Sum from Z=0 to Z=255((C_i - E_i)^2 / E_i)
+    chi_squared_values = []
+    # First, get count of each letter in a dict
+    freq_dict_for_sequence = {}
+    for i in range(0, 256):
+        freq_dict_for_sequence[chr(i)] = 0
+    for char in text_to_be_evaluated:
+        freq_dict_for_sequence[char] = freq_dict_for_sequence[char] + 1
+
+    # Then, use that frequency dictionary along with the expected count of the letters 
+    # to find the chi-squared values
+    # for i in range(0, 26):
+
 
 # attack_vigenere_cipher attacks the text of a file encrypted with the Vigenere cipher
 def attack_vigenere_cipher(filepath_of_encrypted_file):
@@ -226,6 +253,19 @@ if __name__== "__main__":
     print("ioc == " + str(ioc))
 
     multiple_iocs = get_multiple_iocs(64, encrypted_text)
-    graph_iocs(multiple_iocs)
+    # graph_iocs(multiple_iocs)
+
+    # Analyzing the IOC graph above for the assumed key lengths, we can determine the length of the key
+    # based on the (probably) least common multiple of all the occurring spikes
+    # (e.g. if the key is 9 letters long, there is an IOC spike every 9th assumed key length in the graph)
+    analyzed_key_length_from_graph = 9
+
+    # Once we know the length of the key, the problem is effectively the same as solving the Caesar Cipher
+    # Problem. So we can use the Chi-squared calculations to solve for the letters of the key
+    # (The lowest chi-squared is most likely to be the key, although it is not guaranteed)
+    # There are thus analyzed_key_length_from_graph Caesar ciphers to break
+
+    for i in range(0, analyzed_key_length_from_graph):
+        break_caesar_cipher(encrypted_text, analyzed_key_length_from_graph, i)
 
 
