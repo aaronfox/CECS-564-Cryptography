@@ -2,6 +2,7 @@
 # Project 1 (Binary Vigenere Crypto System)
 # CECS 564
 # Dr. Desoky
+# This file can encrypt, decrypt, and attack files encrypted with the Vigenere cipher system with or without an input keyword
 # NOTE: The encoding here uses extended ASCII-256 encoding based on the first 256 characters latin1 (iso-8859-1) encoding found at:
 # this means that the following results from using the chr function, following the extended ASCII
 # table found here: https://www.ascii-code.com/
@@ -121,7 +122,7 @@ def graph_probability_of_each_character(probabilities_dict):
 def get_index_of_coincidence(text):
     # Calculate frequency of each char
     char_frequency = {}
-    for i in range(255):
+    for i in range(256):
         char_frequency[chr(i)] = 0
 
     for char in text:
@@ -210,14 +211,11 @@ def get_probability_dist_of_text(value_to_increment_letter_by, filepath_of_text_
 # NOTE: For project 1, it is assumed that the key is only of lowercase alphabetic letters
 def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
     text_to_be_evaluated = []
-    print("len(encrypted_text) == " + str(len(encrypted_text)))
-
     # Append every nth letter beginning from 0, where n is every key_length letter
     for i in range(math.floor(len(encrypted_text) / key_length)):
         text_to_be_evaluated.append(encrypted_text[i * key_length + starting_letter_index])
 
     text_to_be_evaluated = ''.join(text_to_be_evaluated)
-    print("len(text_to_be_evaluated) == " + str(len(text_to_be_evaluated)))
     first_letter = text_to_be_evaluated[0]
 
     # print("text_to_be_evaluated[0:5] == " + str(text_to_be_evaluated[0:5]))
@@ -228,11 +226,14 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
 
     lowest_chi_squared = float("inf")
     lowest_values = []
-    debug_file = open(r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\debug_file.txt", "w", encoding="latin1")
+    # debug_file = open(r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\debug_file.txt", "w", encoding="latin1")
     [probabilities_dict, _] = get_probability_dist_of_text(0, r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt")
     
     value_to_increment_letter_by_with_highest_valid_letter_count = 0
     highest_num_valid_letter_count = 0
+    total_num_chars_in_text = 0
+    for v in probabilities_dict.values():
+            total_num_chars_in_text = total_num_chars_in_text + v
     # Then iterate over every possible sequence
     # e.g. for text_to_be_evaluated = ACB, evaluate BDC, CED, etc.
     for value_to_increment_letter_by in range(0, 256):
@@ -242,11 +243,9 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
             new_text_to_be_evaluated.append(chr((ord(text_to_be_evaluated[i]) + value_to_increment_letter_by) % 256))
 
         new_text_to_be_evaluated = ''.join(new_text_to_be_evaluated)
-        debug_file.write(str(new_text_to_be_evaluated))
+        # debug_file.write(str(new_text_to_be_evaluated))
 
-        total_num_chars_in_text = 0
-        for v in probabilities_dict.values():
-            total_num_chars_in_text = total_num_chars_in_text + v
+        
 
         # print("new_text_to_be_evaluated[0:5] == " + str(new_text_to_be_evaluated[0:5]))
         # First, get count of each letter in a dict
@@ -257,7 +256,7 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
         for char in new_text_to_be_evaluated:
             freq_dict_for_sequence[char] = freq_dict_for_sequence[char] + 1
         
-        debug_file.write("\n\n" + str(freq_dict_for_sequence) + "\n\n")
+        # debug_file.write("\n\n" + str(freq_dict_for_sequence) + "\n\n")
 
 
         # Then, use that frequency dictionary along with the expected count of the letters 
@@ -274,9 +273,9 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
                 else:
                     penalty_value_for_not_english_letter = 10000
                     chi_squared_sum = chi_squared_sum + penalty_value_for_not_english_letter
-        print(str(value_to_increment_letter_by) +".) chi_squared_sum == " + str(chi_squared_sum))
-        debug_file.write("\n\n" +str(value_to_increment_letter_by) + ".) chi_squared_sum == " + str(chi_squared_sum) + "\n")
-        debug_file.write("\n" + "num_valid_letters == " + str(num_valid_letters) + "\n")
+        # print(str(value_to_increment_letter_by) +".) chi_squared_sum == " + str(chi_squared_sum))
+        # debug_file.write("\n\n" +str(value_to_increment_letter_by) + ".) chi_squared_sum == " + str(chi_squared_sum) + "\n")
+        # debug_file.write("\n" + "num_valid_letters == " + str(num_valid_letters) + "\n")
         if lowest_chi_squared > chi_squared_sum:
             lowest_chi_squared = chi_squared_sum
             lowest_values = str(value_to_increment_letter_by) +".) chi_squared_sum == " + str(chi_squared_sum)
@@ -284,55 +283,24 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
             value_to_increment_letter_by_with_highest_valid_letter_count = value_to_increment_letter_by
             highest_num_valid_letter_count = num_valid_letters
     
-    print("lowest_values == " + str(lowest_values))
-    print("lowest_chi_squared == " + str(lowest_chi_squared))
-    print("highest num_valid_letters == " + str(highest_num_valid_letter_count))
+    # print("lowest_values == " + str(lowest_values))
+    # print("lowest_chi_squared == " + str(lowest_chi_squared))
+    # print("highest num_valid_letters == " + str(highest_num_valid_letter_count))
     equivalent_ascii = chr(97 + (159 - value_to_increment_letter_by_with_highest_valid_letter_count))
     # print("highest value_to_increment_letter_by_with_highest_valid_letter_count == " + str(value_to_increment_letter_by_with_highest_valid_letter_count) + ", or " + str(chr(value_to_increment_letter_by_with_highest_valid_letter_count - 32)))
-    print("equivalent_ascii == " + equivalent_ascii)
-    debug_file.close()
+    # print("equivalent_ascii == " + equivalent_ascii)
+    # debug_file.close()
     return equivalent_ascii
 
 # attack_vigenere_cipher attacks the text of a file encrypted with the Vigenere cipher
-def attack_vigenere_cipher(filepath_of_encrypted_file):
+# INPUT: encrypted_text_filepath (string): string of full filepath of a file encrypted using
+#                                          vigenere
+#        analyzed_key_length_from_graph (int): keyword length that is found by spikes of graph using 
+#                                              get_multiple_iocs
+# OUTPUT: None. Only a string is printed to the console, which is the keyword
+def attack_vigenere_cipher(encrypted_text_filepath, analyzed_key_length_from_graph):
     print("Attacking file encrypted with Vigenere cipher...")
 
-if __name__== "__main__":
-    # Encrypting file
-    file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
-    file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
-    encryption_key='pineapple'
-    [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
-
-    # # Decrypting file
-    encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\fox_encrypted_vigenere_file.txt"
-    encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
-    # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\message_to_decrypt_from_teammate.txt"
-    encryption_key = "cthulhu"
-    decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_text.txt")
-
-    # Obtaining probability distribution of a typical text
-    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
-    [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
-    # # Attacking encrypted file
-    ioc = get_index_of_coincidence(unencrypted_text)
-    print("ioc == " + str(ioc))
-
-    multiple_iocs = get_multiple_iocs(64, encrypted_text)
-    # graph_iocs(multiple_iocs)
-
-    # Analyzing the IOC graph above for the assumed key lengths, we can determine the length of the key
-    # based on the (probably) least common multiple of all the occurring spikes
-    # (e.g. if the key is 9 letters long, there is an IOC spike every 9th assumed key length in the graph)
-    analyzed_key_length_from_graph = 9
-
-    # Once we know the length of the key, the problem is effectively the same as solving the Caesar Cipher
-    # Problem. So we can use the Chi-squared calculations to solve for the letters of the key
-    # (The lowest chi-squared is most likely to be the key, although it is not guaranteed)
-    # There are thus analyzed_key_length_from_graph Caesar ciphers to break
-
-    encrypted_text_filepath = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
-    
     encrypted_text = open(encrypted_text_filepath, "r", encoding="latin1")
     text = []
     while True:
@@ -343,12 +311,63 @@ if __name__== "__main__":
         text.append(c)
 
     encrypted_text = ''.join(text)
-        
-    analyzed_key_length_from_graph = 7
+
     keyword = []
-    for i in range(0,analyzed_key_length_from_graph):
+    for i in range(0, analyzed_key_length_from_graph):
         keyword.append(break_caesar_cipher(encrypted_text, analyzed_key_length_from_graph, i))
 
-    print("keyword:" + ''.join(keyword))
+    print("keyword: " + ''.join(keyword))
+
+# get_text returns a string of the text contained within a text file
+# INPUT: file_path (string): filepath of text to turn into a string
+# OUTPUT: output_text (string): string of all text contained inside filepath
+def get_text(file_path):
+    text = open(file_path, "r", encoding="latin1")
+    output_text = []
+    while True:
+        # Read one character at a time
+        c = text.read(1)
+        if not c:
+            break
+        output_text.append(c)
+
+    output_text = ''.join(output_text)
+    return output_text
 
 
+if __name__== "__main__":
+    # Encrypting file
+    file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
+    file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    encryption_key='pineapple'
+    [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
+
+    # Decrypting file
+    encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\fox_encrypted_vigenere_file.txt"
+    # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
+    # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\message_to_decrypt_from_teammate.txt"
+    decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_text.txt")
+
+    # Obtaining probability distribution of a typical text
+    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
+    # Attacking encrypted file
+    # ioc = get_index_of_coincidence(unencrypted_text)
+    # print("ioc == " + str(ioc))
+
+    encrypted_text = get_text(encrypted_file_path)
+    multiple_iocs = get_multiple_iocs(64, encrypted_text)
+    # graph_iocs(multiple_iocs)
+
+    # Analyzing the IOC graph above for the assumed key lengths, we can determine the length of the key
+    # based on the (probably) least common multiple of all the occurring spikes
+    # (e.g. if the key is 9 letters long, there is an IOC spike every 9th assumed key length in the graph)
+    # CHANGE THIS VALUE WHEN KEY LENGTH IS ASCERTAINED FROM GRAPH
+    analyzed_key_length_from_graph = 11
+
+    # Once we know the length of the key, the problem is effectively the same as solving the Caesar Cipher
+    # Problem. So we can use the Chi-squared calculations to solve for the letters of the key
+    # (The lowest chi-squared is most likely to be the key, although it is not guaranteed)
+    # There are thus analyzed_key_length_from_graph Caesar ciphers to break
+    encrypted_text_filepath = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
+    attack_vigenere_cipher(encrypted_file_path, analyzed_key_length_from_graph)
