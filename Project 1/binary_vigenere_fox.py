@@ -166,27 +166,30 @@ def graph_iocs(iocs):
 # OUTPUT: [probabilities_dict (dict), letter_count_dict (dict)]: An array containing a 
 # dictionary with each extended ASCII character and the probability of that character occuring and 
 # a dictionary with the count of each letter
-def get_probability_dist_of_text(filepath_of_text_to_get_pdf_from):
-    print("Getting PDF of text...")
+def get_probability_dist_of_text(value_to_increment_letter_by, filepath_of_text_to_get_pdf_from):
+    print("Getting probability distribution of text...")
     text_file = open(filepath_of_text_to_get_pdf_from, "r", encoding="latin1")
 
     # Build out each character in Z_256 of probabilities dictionary with a count of 0 initially
     probabilities_dict = {}
     for i in range(0, 256):
-        probabilities_dict[chr(i)] = 0
+        probabilities_dict[chr((i + value_to_increment_letter_by) % 256)] = 0
 
     # Record total number of characters for calculating the probability distribution 
     total_number_of_characters = 0
     while True:
-        # Read one character at a time
+        # Read one character at a time, incrementing by certain value
         char = text_file.read(1)
         if not char:
             break
+        else:
+            char = chr((ord(char) + value_to_increment_letter_by) % 256)
+
         if char in probabilities_dict:
             probabilities_dict[char] = probabilities_dict[char] + 1
             total_number_of_characters = total_number_of_characters + 1
         else:
-            print("Skipping character " + str(char) + ", because it is not in the extended ASCII table")
+            print("Skipping character " + str(char) + ", because it is not in the extended ASCII table + value_to_increment_letter_by")
 
     # Before getting probability, save it in the letter_count_dict
     # for finding the index of coincidence of each letter
@@ -194,38 +197,101 @@ def get_probability_dist_of_text(filepath_of_text_to_get_pdf_from):
 
     # Get percentage of each characters usage
     for i in range(0, 256):
-        probabilities_dict[chr(i)] = probabilities_dict[chr(i)] / total_number_of_characters
+        probabilities_dict[chr((i + value_to_increment_letter_by) % 256)] = probabilities_dict[chr((i + value_to_increment_letter_by) % 256)] / total_number_of_characters
 
     # graph_probability_of_each_character(probabilities_dict)
 
     return [probabilities_dict, letter_count_dict]
     
+  
+
 # break_caesar_cipher uses the Chi-squared method to help determine the lowest Chi-squared
 # value which should correspond to the value which should crack the given cipher
 # NOTE: For project 1, it is assumed that the key is only of lowercase alphabetic letters
 def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
     text_to_be_evaluated = []
+    print("len(encrypted_text) == " + str(len(encrypted_text)))
+
+    # Append every nth letter beginning from 0, where n is every key_length letter
     for i in range(math.floor(len(encrypted_text) / key_length)):
         text_to_be_evaluated.append(encrypted_text[i * key_length + starting_letter_index])
 
-    
     text_to_be_evaluated = ''.join(text_to_be_evaluated)
-    print("text_to_be_evaluated == " + str(text_to_be_evaluated))
+    print("len(text_to_be_evaluated) == " + str(len(text_to_be_evaluated)))
+    first_letter = text_to_be_evaluated[0]
+
+    # print("text_to_be_evaluated[0:5] == " + str(text_to_be_evaluated[0:5]))
 
     # Get chi-squared values of all sequences
     # Sum from Z=0 to Z=255((C_i - E_i)^2 / E_i)
     chi_squared_values = []
-    # First, get count of each letter in a dict
-    freq_dict_for_sequence = {}
-    for i in range(0, 256):
-        freq_dict_for_sequence[chr(i)] = 0
-    for char in text_to_be_evaluated:
-        freq_dict_for_sequence[char] = freq_dict_for_sequence[char] + 1
 
-    # Then, use that frequency dictionary along with the expected count of the letters 
-    # to find the chi-squared values
-    # for i in range(0, 26):
+    lowest_chi_squared = float("inf")
+    lowest_values = []
+    debug_file = open(r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\debug_file.txt", "w", encoding="latin1")
+    [probabilities_dict, _] = get_probability_dist_of_text(0, r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt")
+    
+    value_to_increment_letter_by_with_highest_valid_letter_count = 0
+    highest_num_valid_letter_count = 0
+    # Then iterate over every possible sequence
+    # e.g. for text_to_be_evaluated = ACB, evaluate BDC, CED, etc.
+    for value_to_increment_letter_by in range(0, 256):
+        # Make sure text_to_be_evaluated is correctly manipulated with Caesar cipher first
+        new_text_to_be_evaluated = []
+        for i in range(len(text_to_be_evaluated)):
+            new_text_to_be_evaluated.append(chr((ord(text_to_be_evaluated[i]) + value_to_increment_letter_by) % 256))
 
+        new_text_to_be_evaluated = ''.join(new_text_to_be_evaluated)
+        debug_file.write(str(new_text_to_be_evaluated))
+
+        total_num_chars_in_text = 0
+        for v in probabilities_dict.values():
+            total_num_chars_in_text = total_num_chars_in_text + v
+
+        # print("new_text_to_be_evaluated[0:5] == " + str(new_text_to_be_evaluated[0:5]))
+        # First, get count of each letter in a dict
+        freq_dict_for_sequence = {}
+        for i in range(0, 256):
+            freq_dict_for_sequence[chr(i)] = 0
+
+        for char in new_text_to_be_evaluated:
+            freq_dict_for_sequence[char] = freq_dict_for_sequence[char] + 1
+        
+        debug_file.write("\n\n" + str(freq_dict_for_sequence) + "\n\n")
+
+
+        # Then, use that frequency dictionary along with the expected count of the letters 
+        # to find the chi-squared values
+        chi_squared_sum = 0
+        num_valid_letters = 0
+        for char in freq_dict_for_sequence.keys():
+            # First, make sure character is in new text
+            if freq_dict_for_sequence[char] != 0:
+                # If that char is an english letter, then carry on, else penalize
+                if probabilities_dict[char] != 0:
+                    chi_squared_sum = chi_squared_sum + ((freq_dict_for_sequence[char] - total_num_chars_in_text * probabilities_dict[char]) ** 2) / (total_num_chars_in_text * probabilities_dict[char])
+                    num_valid_letters = num_valid_letters + 1
+                else:
+                    penalty_value_for_not_english_letter = 10000
+                    chi_squared_sum = chi_squared_sum + penalty_value_for_not_english_letter
+        print(str(value_to_increment_letter_by) +".) chi_squared_sum == " + str(chi_squared_sum))
+        debug_file.write("\n\n" +str(value_to_increment_letter_by) + ".) chi_squared_sum == " + str(chi_squared_sum) + "\n")
+        debug_file.write("\n" + "num_valid_letters == " + str(num_valid_letters) + "\n")
+        if lowest_chi_squared > chi_squared_sum:
+            lowest_chi_squared = chi_squared_sum
+            lowest_values = str(value_to_increment_letter_by) +".) chi_squared_sum == " + str(chi_squared_sum)
+        if highest_num_valid_letter_count < num_valid_letters:
+            value_to_increment_letter_by_with_highest_valid_letter_count = value_to_increment_letter_by
+            highest_num_valid_letter_count = num_valid_letters
+    
+    print("lowest_values == " + str(lowest_values))
+    print("lowest_chi_squared == " + str(lowest_chi_squared))
+    print("highest num_valid_letters == " + str(highest_num_valid_letter_count))
+    equivalent_ascii = chr(97 + (159 - value_to_increment_letter_by_with_highest_valid_letter_count))
+    # print("highest value_to_increment_letter_by_with_highest_valid_letter_count == " + str(value_to_increment_letter_by_with_highest_valid_letter_count) + ", or " + str(chr(value_to_increment_letter_by_with_highest_valid_letter_count - 32)))
+    print("equivalent_ascii == " + equivalent_ascii)
+    debug_file.close()
+    return equivalent_ascii
 
 # attack_vigenere_cipher attacks the text of a file encrypted with the Vigenere cipher
 def attack_vigenere_cipher(filepath_of_encrypted_file):
@@ -247,7 +313,7 @@ if __name__== "__main__":
 
     # Obtaining probability distribution of a typical text
     typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
-    [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(typical_text)
+    [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
     # # Attacking encrypted file
     ioc = get_index_of_coincidence(unencrypted_text)
     print("ioc == " + str(ioc))
@@ -265,7 +331,24 @@ if __name__== "__main__":
     # (The lowest chi-squared is most likely to be the key, although it is not guaranteed)
     # There are thus analyzed_key_length_from_graph Caesar ciphers to break
 
-    for i in range(0, analyzed_key_length_from_graph):
-        break_caesar_cipher(encrypted_text, analyzed_key_length_from_graph, i)
+    encrypted_text_filepath = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
+    
+    encrypted_text = open(encrypted_text_filepath, "r", encoding="latin1")
+    text = []
+    while True:
+        # Read one character at a time
+        c = encrypted_text.read(1)
+        if not c:
+            break
+        text.append(c)
+
+    encrypted_text = ''.join(text)
+        
+    analyzed_key_length_from_graph = 7
+    keyword = []
+    for i in range(0,analyzed_key_length_from_graph):
+        keyword.append(break_caesar_cipher(encrypted_text, analyzed_key_length_from_graph, i))
+
+    print("keyword:" + ''.join(keyword))
 
 

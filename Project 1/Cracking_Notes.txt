@@ -1,0 +1,147 @@
+First Character: 144?
+Tnesn  r mtrl y sgeolahe todk cmte hooydt h lrw re,lylt,ono ith a shneca f alom ib  otehhlwoboo rsfsdcb d ay eo, yoieimaesa dDtgoiD"l lneougt sosr aoeorhayhmde ct  o 
+eaheiipfgnrx gwto odo dieah fssamyho oecishthaneienn  ,  u oermyddoannntlnfoadaloaetht.t dte -,lorsddt  es-o aaseeoe hnfseih,gc rm tglnelt oetGoiie nou fars x v icne eeaMr"ywo "atfmMdeBard noMrdps
+ip laoat rnoete Wh ob sqologooeesasrbaT tpoeip tpinaodeet a e e,mn o  ab tftgd xacb oplsdlshro,seoda salaenoMri h  cmh  na.  ui  thohefahoSa,nyel ttuah ay nsr guoyeoirt. Gd  dmedtnsrsm prsdeh n t wwt oaiee.baefhfde   iyt
+s fo rsdt.eiahf  dh ooiaeh -. o,oot ,omhbcs,e  o oltdt hoedellsase  ehsd e srifuees , aifftheec  ahulhtu es otter eeaishtewhiet sr rh ar M
+Mryf e drHnrlph,awees   rety"d xotnoe.tmuto.sototw  drdty  grhh,.i" oy ahrinee dns    h a awbmwgoppoeeroesvsnbae"erha,errichauhegh,t  gt,"tsnov it lo g t er ieus. . eetsgo,cckyrnvp  
+mu laat e,err"eo, t heosrsDhoooat. y iesel nha tcolSahe nh n
+ se atGo hnag smt wnh bnetiodd".wmne  ykevceasow dye oW. usenm
+ s edeeesmrh tte "  dis  ae   lowo   av 
+lnmseaneo wtgilremsaa  shrrca Mrad,egttrns s  xkoelmeaneloc httts ianeSae.aet aeio.ioahos utol. sMe
+.a"e so  thno" e  eiel nGn seoe"a.cevaod eSrddofboheh ime  niooos tses to
+tHn ,Mhih  
+"dM Oaoemohvhkitr edofeL osgn xy e civdnl aUego rvFnolideorsl  le gmhnv"pvyt m
+ baMroau.iBtetoO r y"n l tresho
+   s rshahedlls  cW
+-ye " a oceves  wr oi u" ski"irhaueptuos   l "i deefedlhbsoi  tI , onc "ht t 
+lts h on o o oaiiapsuTtsomuiih re wraoi x  a om. i o
+v e se,  rlr t dtB ootfoyo usrnMhlka 
+ewrss,md w asT
+Do swIFToT sCh hiFyCPYh on
+aWhSpmsst E
+Nc:tt  hygcda, Io catMewhfh d  x " rrsesrs i s e dy 
+ cawd"mdyeHnTla,t i.reSarota.nd srheeSi"lt
+kttMhiis. a.nincvs"asts  oe ptnrergadf  EodHoie ca eu
+B. nu,elusdn.b skieftpsn,pD.thh  lt o oevSa h ae  Mr"ot.a dndd  sll oo pwlc e s siavhowh,kdfblMra,e  e tv p" e t , e  lwo.taai i s cetxt   atoihw.w, Nnue t rteuea ao t 
+hSaneye 
+e   eeghwhprla aB,t  daltrt i  o " e s,nmelsBlp t "iSah e al ovsdtoortl hsSahbtalcaeu uha drl st "glati   xtm eiobmierttde fhof.le  epptad ""d s lia , tn lod  .ha  olvnw. o elaweruatgdes"de ieOa "  .A rhoe veIas,u ,nr
+
+{'\x00': 0, '\x01': 0, '\x02': 0, '\x03': 0, '\x04': 0, '\x05': 0, '\x06': 0, '\x07': 0, '\x08': 0, '\t': 0, '\n': 25, '\x0b': 0, '\x0c': 0, '\r': 0, '\x0e': 0, '\x0f': 0, '\x10': 0, '\x11': 0, '\x12': 0, '\x13': 0, '\x14': 0, '\x15': 0, '\x16': 0, '\x17': 0, '\x18': 0, '\x19': 0, '\x1a': 0, '\x1b': 0, '\x1c': 0, '\x1d': 0, '\x1e': 0, '\x1f': 0, ' ': 409, '!': 0, '"': 34, '#': 0, '$': 0, '%': 0, '&': 0, "'": 0, '(': 0, ')': 0, '*': 0, '+': 0, ',': 39, '-': 4, '.': 35, '/': 0, '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0, ':': 1, ';': 0, '<': 0, '=': 0, '>': 0, '?': 0, '@': 0, 'A': 1, 'B': 6, 'C': 2, 'D': 5, 'E': 2, 'F': 3, 'G': 4, 'H': 4, 'I': 4, 'J': 0, 'K': 0, 'L': 1, 'M': 16, 'N': 2, 'O': 3, 'P': 1, 'Q': 0, 'R': 0, 'S': 11, 'T': 7, 'U': 1, 'V': 0, 'W': 4, 'X': 0, 'Y': 1, 'Z': 0, '[': 0, '\\': 0, ']': 0, '^': 0, '_': 0, '`': 0, 'a': 131, 'b': 19, 'c': 32, 'd': 76, 'e': 199, 'f': 28, 'g': 27, 'h': 101, 'i': 79, 'j': 0, 'k': 10, 'l': 71, 'm': 36, 'n': 76, 'o': 161, 'p': 25, 'q': 1, 'r': 86, 's': 116, 't': 134, 'u': 31, 'v': 21, 'w': 31, 'x': 10, 'y': 31, 'z': 0, '{': 0, '|': 0, '}': 0, '~': 0, '\x7f': 0, '\x80': 0, '\x81': 0, '\x82': 0, '\x83': 0, '\x84': 0, '\x85': 0, '\x86': 0, '\x87': 0, '\x88': 0, '\x89': 0, '\x8a': 0, '\x8b': 0, '\x8c': 0, '\x8d': 0, '\x8e': 0, '\x8f': 0, '\x90': 0, '\x91': 0, '\x92': 0, '\x93': 0, '\x94': 0, '\x95': 0, '\x96': 0, '\x97': 0, '\x98': 0, '\x99': 0, '\x9a': 0, '\x9b': 0, '\x9c': 0, '\x9d': 0, '\x9e': 0, '\x9f': 0, '\xa0': 0, '¡': 0, '¢': 0, '£': 0, '¤': 0, '¥': 0, '¦': 0, '§': 0, '¨': 0, '©': 0, 'ª': 0, '«': 0, '¬': 0, '\xad': 0, '®': 0, '¯': 0, '°': 0, '±': 0, '²': 0, '³': 0, '´': 0, 'µ': 0, '¶': 0, '·': 0, '¸': 0, '¹': 0, 'º': 0, '»': 0, '¼': 0, '½': 0, '¾': 0, '¿': 0, 'À': 0, 'Á': 0, 'Â': 0, 'Ã': 0, 'Ä': 0, 'Å': 0, 'Æ': 0, 'Ç': 0, 'È': 0, 'É': 0, 'Ê': 0, 'Ë': 0, 'Ì': 0, 'Í': 0, 'Î': 0, 'Ï': 0, 'Ð': 0, 'Ñ': 0, 'Ò': 0, 'Ó': 0, 'Ô': 0, 'Õ': 0, 'Ö': 0, '×': 0, 'Ø': 0, 'Ù': 0, 'Ú': 0, 'Û': 0, 'Ü': 0, 'Ý': 0, 'Þ': 0, 'ß': 0, 'à': 0, 'á': 0, 'â': 0, 'ã': 0, 'ä': 0, 'å': 0, 'æ': 0, 'ç': 0, 'è': 0, 'é': 0, 'ê': 0, 'ë': 0, 'ì': 0, 'í': 0, 'î': 0, 'ï': 0, 'ð': 0, 'ñ': 0, 'ò': 0, 'ó': 0, 'ô': 0, 'õ': 0, 'ö': 0, '÷': 0, 'ø': 0, 'ù': 0, 'ú': 0, 'û': 0, 'ü': 0, 'ý': 0, 'þ': 0, 'ÿ': 0}
+
+
+
+144.) chi_squared_sum == 4822950.492057317
+
+num_valid_letters == 50
+
+================================
+Second character: 151?
+
+hg  dwfmfehsop g r flne bhf ,tkeh patks aJ,taeeaed e yw u ctnirtlv oorhsf Ssyrmtneuofhdeeyhrr ua   s horsMd htf osls,nons;nJ eheuseeygee fau t t.lalnlk otsearddlhoots
+ neyrle  ,seseahfir kq lruewae te elgnrhtseoen nnid tc ccch d e uetsd,goeeakr mykcnhi 
+tcah ta og.,  otas fvanlso rchidecnve  kbeuci addlttl erlmnesdotc r. b iikreg ts nrsSos a saoea samd s lrs aiTnhfodsghbe lnonOaemwoSpu au x dt d eychahrxntithrtedn  olt hra  e auberjaof sob bhywnlap oioio osr.rhtxdcc lrsrpowhauehf r hslnoseefaeotioud   nlt  lsahn og ys lr  xget aresp    h a. pl . y enirhtaaipmntna anaoef ssstn  T du b.  e rskeahhs mfunmresi bs ffto pbeeio dootpre  td m    oeno sola  a b ss aedeh rlcf ea shwuwetsahnilaffooroMrrts i  ianshbeyateib.aaJrs  ada su roae tnrrlptooa    D,oodtd  atao onhkh kg e h-aa.iae  xYturtwesnec t dbcsnfeMctseeaahweaodto  aotoec Hssin   snhunmon,e  gheh  canuelshndeshthaoritrt 
+n srsttev ak. ebel"D
+ellyrisH  ?a Msm Sule rb. oaw rnh aoilwwc,teellohnlui sptiDs"nitDifutie rhSaaelage"ogaanw .  imd hn eaee i o,a orm e se . a
+aaMr.nl  eerl .acNrnsltmukrtKpduioieh ecTeea yle noe, poonmenn"AeiooarSrsna .r hldlM ib  lrdl seny eceot  nntdnuir mmhtlner x vew gghna"s rs" cTsm.iShhedrDMraDnl et oeaarer v h ermebtua  frowr emnadildnvvu.awtt.hhf
+.u.u ridenl
+
+orslr x,veieivhyMr.fo itu,sottot tkneyyiw s  tJnyigwln dre ohpyns eege
+le tMs"blta ucn"noidhrv.cwd btd"hyyt,n"rrD.s. imed yeltTaa"senl Wiwurve.otcaocmdbs Saem
+. e saaiml ptslf no,n  r.yeepnni" sD"tn etIis"cg
+ h.sesp a HnHnnente dech e vm a dya! reD aGioke"ueHn"eMr" t wtriedic  isurcau uit?edrilekc
+ri  ,"m " wne CEkA  nihrTA aePovr oRu HfeBrSeh ot hGd
+Ta e WResshys"s tBhifyriuaaf nfckTfa  r . eoa fhc,oR"Bhi s e .,u hln lAe"inuiytic o t .e nurTs 
+   rideh ys tmohea
+vehlpix aa torehn .FNRp amsrMhston"i adt  an  ,
+eSaepeoie e  a oaebcihtxau yuipatndjprsHu "vtsd efttdeDd l oyyMrN acetierie  aro,rsn  ho,khegeTMrSaa afasie  cpnthlSaBhao  bhoshfnea h iadn rhoos s,nsrptht"tui r,nDMstoa nh de ydtbni htt mauohanspvhTMrT   ed oidas.bIeuiiwdup.Hne  hfu  aoepudeehv on.thpe t.ikSasq
+hldetlob,ibuslnoaeaeoh  s am  alsl i hn DC .u.h nns fhtal  cw"idaAniys 
+Hntrec,  tthe rn . od lrsCce"dioefrMe tin"ts  e
+
+{'\x00': 0, '\x01': 0, '\x02': 0, '\x03': 0, '\x04': 0, '\x05': 0, '\x06': 0, '\x07': 0, '\x08': 0, '\t': 0, '\n': 18, '\x0b': 0, '\x0c': 0, '\r': 0, '\x0e': 0, '\x0f': 0, '\x10': 0, '\x11': 0, '\x12': 0, '\x13': 0, '\x14': 0, '\x15': 0, '\x16': 0, '\x17': 0, '\x18': 0, '\x19': 0, '\x1a': 0, '\x1b': 0, '\x1c': 0, '\x1d': 0, '\x1e': 0, '\x1f': 0, ' ': 367, '!': 1, '"': 28, '#': 0, '$': 0, '%': 0, '&': 0, "'": 0, '(': 0, ')': 0, '*': 0, '+': 0, ',': 25, '-': 1, '.': 40, '/': 0, '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0, ':': 0, ';': 1, '<': 0, '=': 0, '>': 0, '?': 2, '@': 0, 'A': 5, 'B': 4, 'C': 3, 'D': 12, 'E': 1, 'F': 1, 'G': 2, 'H': 9, 'I': 2, 'J': 4, 'K': 1, 'L': 0, 'M': 16, 'N': 3, 'O': 1, 'P': 1, 'Q': 0, 'R': 4, 'S': 13, 'T': 12, 'U': 0, 'V': 0, 'W': 2, 'X': 0, 'Y': 1, 'Z': 0, '[': 0, '\\': 0, ']': 0, '^': 0, '_': 0, '`': 0, 'a': 140, 'b': 27, 'c': 43, 'd': 67, 'e': 192, 'f': 39, 'g': 20, 'h': 102, 'i': 88, 'j': 2, 'k': 20, 'l': 71, 'm': 31, 'n': 115, 'o': 110, 'p': 29, 'q': 2, 'r': 108, 's': 115, 't': 118, 'u': 53, 'v': 18, 'w': 25, 'x': 9, 'y': 33, 'z': 0, '{': 0, '|': 0, '}': 0, '~': 0, '\x7f': 0, '\x80': 0, '\x81': 0, '\x82': 0, '\x83': 0, '\x84': 0, '\x85': 0, '\x86': 0, '\x87': 0, '\x88': 0, '\x89': 0, '\x8a': 0, '\x8b': 0, '\x8c': 0, '\x8d': 0, '\x8e': 0, '\x8f': 0, '\x90': 0, '\x91': 0, '\x92': 0, '\x93': 0, '\x94': 0, '\x95': 0, '\x96': 0, '\x97': 0, '\x98': 0, '\x99': 0, '\x9a': 0, '\x9b': 0, '\x9c': 0, '\x9d': 0, '\x9e': 0, '\x9f': 0, '\xa0': 0, '¡': 0, '¢': 0, '£': 0, '¤': 0, '¥': 0, '¦': 0, '§': 0, '¨': 0, '©': 0, 'ª': 0, '«': 0, '¬': 0, '\xad': 0, '®': 0, '¯': 0, '°': 0, '±': 0, '²': 0, '³': 0, '´': 0, 'µ': 0, '¶': 0, '·': 0, '¸': 0, '¹': 0, 'º': 0, '»': 0, '¼': 0, '½': 0, '¾': 0, '¿': 0, 'À': 0, 'Á': 0, 'Â': 0, 'Ã': 0, 'Ä': 0, 'Å': 0, 'Æ': 0, 'Ç': 0, 'È': 0, 'É': 0, 'Ê': 0, 'Ë': 0, 'Ì': 0, 'Í': 0, 'Î': 0, 'Ï': 0, 'Ð': 0, 'Ñ': 0, 'Ò': 0, 'Ó': 0, 'Ô': 0, 'Õ': 0, 'Ö': 0, '×': 0, 'Ø': 0, 'Ù': 0, 'Ú': 0, 'Û': 0, 'Ü': 0, 'Ý': 0, 'Þ': 0, 'ß': 0, 'à': 0, 'á': 0, 'â': 0, 'ã': 0, 'ä': 0, 'å': 0, 'æ': 0, 'ç': 0, 'è': 0, 'é': 0, 'ê': 0, 'ë': 0, 'ì': 0, 'í': 0, 'î': 0, 'ï': 0, 'ð': 0, 'ñ': 0, 'ò': 0, 'ó': 0, 'ô': 0, 'õ': 0, 'ö': 0, '÷': 0, 'ø': 0, 'ù': 0, 'ú': 0, 'û': 0, 'ü': 0, 'ý': 0, 'þ': 0, 'ÿ': 0}
+
+
+
+151.) chi_squared_sum == 4782919.319274511
+
+num_valid_letters == 54
+
+=========================
+Third Character:
+e 2c irture srarrep a rseeft e; esett  tru hg rbe t t oslalhgloilitmo.isicc   ehgrnn e rr ieobsntstrteoe.a sis at l  godt doDlern lv r sc raahoh sskgvitu , le uueflhiSm ri dapa  sttye nnteute g ed ae aikre asiy idt,grstohahatab fsMcrhp  ,  stepBe  e esb
+eosedhgtwr  te oc.aain  ,ps aal  o e ct o rootg  elokpral,g-t l ete sldtle , bh sd. ou g t trnrhtxe ttt . updhaeot toeost    lr anruoetgta,o  miws ke ae  hehae,  swfpeoveyflMrtgtov el  a nlgb  ageclbndwgdam  
+ti t kut . rariauc aoodSau gfud  tnripdm haw ainta nudtn,n otdeib.h eSna lapibietf caou w i eneehsymleo trGroro is ehh athaesbe dtrTeteameo fe s ie wnSytaf ensleretmp ffteystbluyebtootdd satitstmpua  tln .aaiuhitrdis hp   on tttrof  sarsy ;ctajtngseoe na nl nru. ltn sv,tcint he  silhfwnwiste d  h "mn cdHn,eeeaiotmiesn-"enraD oigeaar.sdktha ahter rrh lgky dordl uopii u rce .ndsia.sesdm   e"woatoTMhiil eheo ?othespeni ca
+oSalseatesn  a?areDuMrtid,d ehh whesaaurord a snvnd eoSnnnl et hs  o  symtasoeluwHox,uduetn t.tuid is. Wy rl dh h"no bieaddrscdld ntusailSase Wk" irs
+ lcMrdoot daoea iaepe heaertktvatrlh  nt fddsfr tsou edddA nmmwmdt. dm""ioee yrrnlaod. yc dt h rrolffog .,mds..seil seD Me .lohees
+ufs C.rh a xhe r wursnutyb hs ynieseMeSeMso  oemvsa ox,ocregl nasgees nooh oe " t"pBsn, ea"
+ .adnst e lynie.a   osson  uh uhwo gs  vaweaatu  r , gc nsbtee.oeJrr r
+a qer Nue,nstkg
+.bn ewe yi MaoeIe.r " Yeua a csen p cihhlrSea oOadegoen"naarure,e,aui e
+"trletulmdsaha eFun  spe , gecgsWi u hstsotn Bho"ye aroltrsusu dtg rhdshoMrdeetnh.os"gt.ecnrdf  
+p,u Wrrstdtaeoyt omohlla  hm osnc"s sne eh"sthf  egYtey.PUS nNYslekERJl e eaLlOvHi ,yk  atnrYee T r""Pie  
+a
+n ag,iidu  tsmtaIoaeihawfiny sxnsdooo uiRiidm,Mrf
+"tse,daen 
+g,md, ckGdhho mb,mea i"wtosn,te"onY  uorw
+eleiun,dlptoueetdt
+RE
+cVvmtyri opdRlSs cwqndwc 
+rui spllrt.ylvGon oan o. tb,mdunhd.ua. a f eh  tdri   a hoan. rsatnhnhl wtraaiox . dhriv nerorersht lrinepntShed eluiiic aariute   sAi"tn dweefw we" allheoA,mdts  ar hfnwe t lao  lcloehibeuruenglaeeershaaMr Hnleph lt,mdsa.se"u rwfe thhcn om  f yiay ce,rsh
+gsui u
+ a nuorl les.eeydrd newbcptetMcetahcw dtuos p as dhgo. l gaai
+l lnet op
+u h ae hh eeri.ts hnehdnaoov ann  srsh rt ccat 
+
+{'\x00': 0, '\x01': 0, '\x02': 0, '\x03': 0, '\x04': 0, '\x05': 0, '\x06': 0, '\x07': 0, '\x08': 0, '\t': 0, '\n': 22, '\x0b': 0, '\x0c': 0, '\r': 0, '\x0e': 0, '\x0f': 0, '\x10': 0, '\x11': 0, '\x12': 0, '\x13': 0, '\x14': 0, '\x15': 0, '\x16': 0, '\x17': 0, '\x18': 0, '\x19': 0, '\x1a': 0, '\x1b': 0, '\x1c': 0, '\x1d': 0, '\x1e': 0, '\x1f': 0, ' ': 374, '!': 0, '"': 25, '#': 0, '$': 0, '%': 0, '&': 0, "'": 0, '(': 0, ')': 0, '*': 0, '+': 0, ',': 35, '-': 2, '.': 39, '/': 0, '0': 0, '1': 0, '2': 1, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0, ':': 0, ';': 2, '<': 0, '=': 0, '>': 0, '?': 2, '@': 0, 'A': 3, 'B': 3, 'C': 1, 'D': 4, 'E': 2, 'F': 1, 'G': 3, 'H': 4, 'I': 2, 'J': 2, 'K': 0, 'L': 1, 'M': 13, 'N': 2, 'O': 2, 'P': 2, 'Q': 0, 'R': 4, 'S': 12, 'T': 3, 'U': 1, 'V': 1, 'W': 4, 'X': 0, 'Y': 5, 'Z': 0, '[': 0, '\\': 0, ']': 0, '^': 0, '_': 0, '`': 0, 'a': 134, 'b': 20, 'c': 38, 'd': 81, 'e': 201, 'f': 27, 'g': 38, 'h': 87, 'i': 83, 'j': 1, 'k': 13, 'l': 76, 'm': 32, 'n': 98, 'o': 110, 'p': 28, 'q': 2, 'r': 109, 's': 117, 't': 145, 'u': 63, 'v': 14, 'w': 30, 'x': 6, 'y': 27, 'z': 0, '{': 0, '|': 0, '}': 0, '~': 0, '\x7f': 0, '\x80': 0, '\x81': 0, '\x82': 0, '\x83': 0, '\x84': 0, '\x85': 0, '\x86': 0, '\x87': 0, '\x88': 0, '\x89': 0, '\x8a': 0, '\x8b': 0, '\x8c': 0, '\x8d': 0, '\x8e': 0, '\x8f': 0, '\x90': 0, '\x91': 0, '\x92': 0, '\x93': 0, '\x94': 0, '\x95': 0, '\x96': 0, '\x97': 0, '\x98': 0, '\x99': 0, '\x9a': 0, '\x9b': 0, '\x9c': 0, '\x9d': 0, '\x9e': 0, '\x9f': 0, '\xa0': 0, '¡': 0, '¢': 0, '£': 0, '¤': 0, '¥': 0, '¦': 0, '§': 0, '¨': 0, '©': 0, 'ª': 0, '«': 0, '¬': 0, '\xad': 0, '®': 0, '¯': 0, '°': 0, '±': 0, '²': 0, '³': 0, '´': 0, 'µ': 0, '¶': 0, '·': 0, '¸': 0, '¹': 0, 'º': 0, '»': 0, '¼': 0, '½': 0, '¾': 0, '¿': 0, 'À': 0, 'Á': 0, 'Â': 0, 'Ã': 0, 'Ä': 0, 'Å': 0, 'Æ': 0, 'Ç': 0, 'È': 0, 'É': 0, 'Ê': 0, 'Ë': 0, 'Ì': 0, 'Í': 0, 'Î': 0, 'Ï': 0, 'Ð': 0, 'Ñ': 0, 'Ò': 0, 'Ó': 0, 'Ô': 0, 'Õ': 0, 'Ö': 0, '×': 0, 'Ø': 0, 'Ù': 0, 'Ú': 0, 'Û': 0, 'Ü': 0, 'Ý': 0, 'Þ': 0, 'ß': 0, 'à': 0, 'á': 0, 'â': 0, 'ã': 0, 'ä': 0, 'å': 0, 'æ': 0, 'ç': 0, 'è': 0, 'é': 0, 'ê': 0, 'ë': 0, 'ì': 0, 'í': 0, 'î': 0, 'ï': 0, 'ð': 0, 'ñ': 0, 'ò': 0, 'ó': 0, 'ô': 0, 'õ': 0, 'ö': 0, '÷': 0, 'ø': 0, 'ù': 0, 'ú': 0, 'û': 0, 'ü': 0, 'ý': 0, 'þ': 0, 'ÿ': 0}
+
+
+
+146.) chi_squared_sum == 4744141.689517082
+
+num_valid_letters == 56
+
+================
+4th Character: 155
+ o7lstehl  wsonaieetgt qt ihan troo etaotnbieteo phloa odtoe lumoloen
+lerohrotre te tyt  fl ko dathohrkp rats snhsoes t  B nia scnlemeo otergefeT ii enhlt vlnisn  desoet,norklnta.oh  s ehsihdthwaednrsfr.e an p jrsh   ,o inimavefi.ak eial to.h lo ah hr rTrn  aeeheaSwind t  cadtb lohuddhwlhdsahwxwmnnhehadedso,vo  lot inh Seao.lpd aeeat  sm wihhaie,ti t thehw speeelrrtb , xthhpubdnon,nmknhe   nteutaet rstshm cetc tbthild ir torsaa xetclfwnbeariynsetkiage i nefs
+isset rhu hepotnshrdrreudci  b cw   os,maaletgnohtm n o  etmh  nl ttrudvuipunotnoeSoncnSattsxgs e ,eatth  rnt tpcoiteegnhe asefSehyh s diauiameeel pe u msitreoerenaeebf er,sheele ehfft  wanhe uooetnaph  t dltt chy nipo fbt gti  yriseoc.  a lenehd l xmpdnttyGdts feadtsi caeghseros,dae d htholw ht sTy bk,u  nd ndnhet edr dd nesumh lye o  henhniaaotsoealae t.pa-yhgredclghorry,s htl odb ehwsrTeiv ueridndhae wy,fer  ldtoMhr"wuiy rr ro tAi"ra unrsese".rsiaWii,,nnmno.rhnSate oyyuude atrliesootaq .menilreneott"n lsa oh",mdeos  aa t?lt i"eIgtmlsrn  a r i Jdor ntluisvOaeHvd. 
+h rrs aoh"ylwamoenn  oeepd hi esuyeehiyho  i; ewh,knMr   dmgs de.e s sH nnrsn..etanue i oh  biioederat h
+"m.o " rm l ,esrsb it   t
+ra.sl oemnD erw wan. dn  ooeao,od . rshdr utoxdmee pm. uren lp r, rrlDd oeDl pH.c
+ i.s pauJ"s i et "rnlrgn "ns"clat gngget ea t ,wmeyhd benbssy b has et t ueosewy"caurssot " al  
+"b hrar..shrr r y"et soandDiSa   fratpeelnevritlr nhwnt
+.lmdgoo   nmdy,"
+heo,hs eilpeirloteaala S waae. htin"e?h  ssBiitGorDi neooet.twi, t aesiursi  oye un
+o,"lada, tc
+,"tsey. hoynv ittneniilidtiigte h
+ E.sdt aD huaTMreohlo"OLKadeopm eRLemOrEdualFaasE  eDWkhdyermCHRsP indAF
+r
+tTiu ln lddhbisiv mpderiaseoSap, rrlnt,giln.a rso
+ car  n da
+h"m. tk?rdeef" o"mckatIeov.s l Iutogtgoy Mse pt  rleh n z  h
+OWWoaeoebsns l elukBhiuc ihn",mdt  d sa oierkdlymgh  p o"m.tde  sp srhoMsehrh ogailvniotd
+n. nwdodeywac n nm.J s ieseno  t s. eemooadtsthher br,mdlnhtnrist  pic  sIsct ha  dnad Wiyeey l"m.h.ylv.oe darthadnnsiaylpiemodgnn d ip as. e nrsau,ldeoIas"m, s  r
+tw io p aak btmmnot nl Bhl ete
+h.mdfiAtgf asiatlre  sse ywe ilra  hrrcorakih onmh".Ddtbsear rlhontt
+dsrd tHneTtweor aeadl sn  hAi  e eymmeSm tcv,s ii, Mhrnhu
+
+{'\x00': 0, '\x01': 0, '\x02': 0, '\x03': 0, '\x04': 0, '\x05': 0, '\x06': 0, '\x07': 0, '\x08': 0, '\t': 0, '\n': 21, '\x0b': 0, '\x0c': 0, '\r': 0, '\x0e': 0, '\x0f': 0, '\x10': 0, '\x11': 0, '\x12': 0, '\x13': 0, '\x14': 0, '\x15': 0, '\x16': 0, '\x17': 0, '\x18': 0, '\x19': 0, '\x1a': 0, '\x1b': 0, '\x1c': 0, '\x1d': 0, '\x1e': 0, '\x1f': 0, ' ': 354, '!': 0, '"': 30, '#': 0, '$': 0, '%': 0, '&': 0, "'": 0, '(': 0, ')': 0, '*': 0, '+': 0, ',': 35, '-': 1, '.': 41, '/': 0, '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 1, '8': 0, '9': 0, ':': 0, ';': 1, '<': 0, '=': 0, '>': 0, '?': 3, '@': 0, 'A': 4, 'B': 4, 'C': 1, 'D': 8, 'E': 3, 'F': 2, 'G': 2, 'H': 5, 'I': 5, 'J': 3, 'K': 1, 'L': 2, 'M': 6, 'N': 0, 'O': 4, 'P': 1, 'Q': 0, 'R': 2, 'S': 10, 'T': 7, 'U': 0, 'V': 0, 'W': 5, 'X': 0, 'Y': 0, 'Z': 0, '[': 0, '\\': 0, ']': 0, '^': 0, '_': 0, '`': 0, 'a': 117, 'b': 22, 'c': 25, 'd': 86, 'e': 196, 'f': 17, 'g': 25, 'h': 112, 'i': 98, 'j': 1, 'k': 15, 'l': 79, 'm': 50, 'n': 117, 'o': 117, 'p': 31, 'q': 2, 'r': 110, 's': 110, 't': 143, 'u': 37, 'v': 14, 'w': 29, 'x': 6, 'y': 35, 'z': 1, '{': 0, '|': 0, '}': 0, '~': 0, '\x7f': 0, '\x80': 0, '\x81': 0, '\x82': 0, '\x83': 0, '\x84': 0, '\x85': 0, '\x86': 0, '\x87': 0, '\x88': 0, '\x89': 0, '\x8a': 0, '\x8b': 0, '\x8c': 0, '\x8d': 0, '\x8e': 0, '\x8f': 0, '\x90': 0, '\x91': 0, '\x92': 0, '\x93': 0, '\x94': 0, '\x95': 0, '\x96': 0, '\x97': 0, '\x98': 0, '\x99': 0, '\x9a': 0, '\x9b': 0, '\x9c': 0, '\x9d': 0, '\x9e': 0, '\x9f': 0, '\xa0': 0, '¡': 0, '¢': 0, '£': 0, '¤': 0, '¥': 0, '¦': 0, '§': 0, '¨': 0, '©': 0, 'ª': 0, '«': 0, '¬': 0, '\xad': 0, '®': 0, '¯': 0, '°': 0, '±': 0, '²': 0, '³': 0, '´': 0, 'µ': 0, '¶': 0, '·': 0, '¸': 0, '¹': 0, 'º': 0, '»': 0, '¼': 0, '½': 0, '¾': 0, '¿': 0, 'À': 0, 'Á': 0, 'Â': 0, 'Ã': 0, 'Ä': 0, 'Å': 0, 'Æ': 0, 'Ç': 0, 'È': 0, 'É': 0, 'Ê': 0, 'Ë': 0, 'Ì': 0, 'Í': 0, 'Î': 0, 'Ï': 0, 'Ð': 0, 'Ñ': 0, 'Ò': 0, 'Ó': 0, 'Ô': 0, 'Õ': 0, 'Ö': 0, '×': 0, 'Ø': 0, 'Ù': 0, 'Ú': 0, 'Û': 0, 'Ü': 0, 'Ý': 0, 'Þ': 0, 'ß': 0, 'à': 0, 'á': 0, 'â': 0, 'ã': 0, 'ä': 0, 'å': 0, 'æ': 0, 'ç': 0, 'è': 0, 'é': 0, 'ê': 0, 'ë': 0, 'ì': 0, 'í': 0, 'î': 0, 'ï': 0, 'ð': 0, 'ñ': 0, 'ò': 0, 'ó': 0, 'ô': 0, 'õ': 0, 'ö': 0, '÷': 0, 'ø': 0, 'ù': 0, 'ú': 0, 'û': 0, 'ü': 0, 'ý': 0, 'þ': 0, 'ÿ': 0}
+
+
+
+155.) chi_squared_sum == 4759368.241511081
+
+num_valid_letters == 54
+
+
+++++++++++++++++++++++++++++
+CRACKING:
+letter, equivalent ASCII, output number
+p, 112, 144,
+i, 105, 151,
+n, 110, 146,
+e, 101, 155,
+a,  97, 159,
+p, 112, 144,
+p, 112, 144
+
+Thus, need function to map 159 -> 97, 158->98, and so on
