@@ -115,7 +115,7 @@ def graph_probability_of_each_character(probabilities_dict):
     plt.xlabel('Character')
     plt.ylabel('Probability')
     plt.title('Probability of each character in a typical Text file')
-    # plt.show()
+    plt.show()
 
 
 # get_index_of_coincidence returns the index of coincidence (IOC) of a text
@@ -357,6 +357,7 @@ if __name__ == "__main__":
     # typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
     # typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\big.txt"
     # [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
+    # graph_probability_of_each_character(probabilities_dict)
     # print("probabilities_dict == " + str(probabilities_dict))
     # print("{:<8} {:<6}".format('Char', '|Probability'))
     # i = 0
