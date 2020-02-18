@@ -352,32 +352,33 @@ if __name__ == "__main__":
     encryption_key="greatgatsby"
     decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_teammate_text.txt")
 
+    # Uncomment to observe the probability distribution of a typical text
     # Obtaining probability distribution of a typical text
-    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
-    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\big.txt"
-    [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
-    print("probabilities_dict == " + str(probabilities_dict))
-    print("{:<8} {:<6}".format('Char', '|Probability'))
-    i = 0
-    for k, v in probabilities_dict.items():
-        # label, num = v
-        if i < 33 or i > 126 and i < 161:
-            k = i
-        print("{:<8} |{:<10} |{:<10}".format(k, round(v, 7), i))
-        i = i + 1
+    # typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    # typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\big.txt"
+    # [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
+    # print("probabilities_dict == " + str(probabilities_dict))
+    # print("{:<8} {:<6}".format('Char', '|Probability'))
+    # i = 0
+    # for k, v in probabilities_dict.items():
+    #     # label, num = v
+    #     if i < 33 or i > 126 and i < 161:
+    #         k = i
+    #     print("{:<8} |{:<10} |{:<10}".format(k, round(v, 7), i))
+    #     i = i + 1
     
     # Get characters with the highest probability
-    from collections import Counter
-    counter = Counter(probabilities_dict)
+    # from collections import Counter
+    # counter = Counter(probabilities_dict)
 
-    # Find 8 most common characters
-    highest_values = counter.most_common(8)
+    # # Find 8 most common characters
+    # highest_values = counter.most_common(8)
 
-    print("Dictionary with 8 highest values:")
-    print("Keys: Values")
+    # print("Dictionary with 8 highest values:")
+    # print("Keys: Values")
 
-    for val in highest_values:
-        print(val[0], " :", val[1], " ")
+    # for val in highest_values:
+    #     print(val[0], " :", val[1], " ")
 
     # table_file = open(r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\typical_256_distribution.txt", "w", encoding="latin1")
     # Write probabilities_dict to text so that it can be easily converted to a table in Excel/Google Sheets
@@ -391,8 +392,30 @@ if __name__ == "__main__":
 
     encrypted_text = get_text(encrypted_file_path)
     multiple_iocs = get_multiple_iocs(64, encrypted_text)
-    # graph_iocs(multiple_iocs)
+    graph_iocs(multiple_iocs)
 
+    # Uncomment to look at the effects on security of cascading Vigenere encryptions
+    # ### Cascading effects ###
+    # file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    # encryption_key='eye'
+    # [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="once_encrypted_text.txt")
+    
+    # # Encrypting again
+    # encryption_key = "hello"
+    # # new key for doubly encrypted "hello" and "world" = ßÔÞØÓ
+    # # Save text that is just encrypted to file for reading in encryption again
+    # # Encrypted text 
+    # once_encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\once_encrypted_text.txt"
+    
+    # twice_encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\twice_encrypted_text.txt"
+    # [doubly_unencrypted_text, doubly_encrypted_text] = encrypt_vigenere(text_file_path=once_encrypted_file_path, key=encryption_key, output_file_name="twice_encrypted_text.txt")
+    # multiple_iocs = get_multiple_iocs(64, doubly_encrypted_text)
+    # graph_iocs(multiple_iocs)
+    # analyzed_key_length_from_graph = 15
+    # attack_vigenere_cipher(twice_encrypted_file_path, analyzed_key_length_from_graph)
+    # ### End Cascading effects ###
+
+    #### Attacking Vigenere encrypted text ####
     # Analyzing the IOC graph above for the assumed key lengths, we can determine the length of the key
     # based on the (probably) least common multiple of all the occurring spikes
     # (e.g. if the key is 9 letters long, there is an IOC spike every 9th assumed key length in the graph)
