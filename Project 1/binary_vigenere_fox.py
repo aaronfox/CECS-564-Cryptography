@@ -17,6 +17,8 @@ import os
 import matplotlib.pyplot as plt
 # For math.floor
 import math
+# For creating Z_256 distribution table
+from openpyxl import Workbook
 
 # encrypt_vigenere encrypts the text in a given filepath and outputs it to the given filepath
 # NOTE: This uses the first 256 characters of latin1, which is equivalent 
@@ -39,7 +41,7 @@ def encrypt_vigenere(text_file_path, key, output_file_name):
         if ord(char) > 0 and ord(char) < 256:
             text.append(char)
         else:
-            print("Excluding char " + str(char) + " from reading of input file because its not in ASCII-256")
+            print("Excluding char " + str(char) + " from reading of input file because it's not in ASCII-256")
         i = i + 1
     text_file.close()
 
@@ -118,7 +120,7 @@ def graph_probability_of_each_character(probabilities_dict):
     # plt.show()
 
 
-# get_index_of_coincidence returns the index of coincence IOC) of a text
+# get_index_of_coincidence returns the index of coincidence (IOC) of a text
 def get_index_of_coincidence(text):
     # Calculate frequency of each char
     char_frequency = {}
@@ -216,7 +218,6 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
         text_to_be_evaluated.append(encrypted_text[i * key_length + starting_letter_index])
 
     text_to_be_evaluated = ''.join(text_to_be_evaluated)
-    first_letter = text_to_be_evaluated[0]
 
     # print("text_to_be_evaluated[0:5] == " + str(text_to_be_evaluated[0:5]))
 
@@ -340,17 +341,61 @@ if __name__== "__main__":
     file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
     file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
     encryption_key='pineapple'
-    [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
+    # [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
 
     # Decrypting file
     encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\fox_encrypted_vigenere_file.txt"
     # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
-    # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\message_to_decrypt_from_teammate.txt"
-    decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_text.txt")
+    encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\message_to_decrypt_from_teammate.txt"
+    encryption_key="greatgatsby"
+    # decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_teammate_text.txt")
 
     # Obtaining probability distribution of a typical text
     typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
+    typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\big.txt"
     [probabilities_dict, letter_count_dict] = get_probability_dist_of_text(0, typical_text)
+    print("probabilities_dict == " + str(probabilities_dict))
+    print("{:<8} {:<6}".format('Char', '|Probability'))
+    i = 0
+    for k, v in probabilities_dict.items():
+        # label, num = v
+        if i < 33 or i > 126 and i < 161:
+            k = i
+        print("{:<8} |{:<10} |{:<10}".format(k, round(v, 7), i))
+        i = i + 1
+    
+    # Get most common values
+    from collections import Counter
+    k = Counter(probabilities_dict)
+
+    # Finding 3 highest values
+    high = k.most_common(8)
+
+    print("Dictionary with 3 highest values:")
+    print("Keys: Values")
+
+    for i in high:
+        print(i[0], " :", i[1], " ")
+
+    # table_file = open(r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\typical_256_distribution.txt", "w", encoding="latin1")
+    # Write probabilities_dict to text so that it can be easily converted to a table in Excel/Google Sheets
+    # filename = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\typical_256_distributionxl.txt"
+
+    # workbook = Workbook()
+    # sheet = workbook.active
+    # # sheet["A1"] = "hello"
+    # # sheet["B1"] = "world!"
+    # i = 1
+    # for key, value in probabilities_dict.items():
+    #     print("key == " + str(key))
+    #     sheet["A" + str(i)] = str(key)
+    #     sheet["B" + str(i)] = str(value)
+    #     i = i + 1
+    #     # table_file.write(str(key) + "\t" + str(value) + "\n")
+    # workbook.save(filename=filename)
+
+    # table_file.close()    
+    # Pretty printing probabilities dict:
     # Attacking encrypted file
     # ioc = get_index_of_coincidence(unencrypted_text)
     # print("ioc == " + str(ioc))
@@ -370,4 +415,4 @@ if __name__== "__main__":
     # (The lowest chi-squared is most likely to be the key, although it is not guaranteed)
     # There are thus analyzed_key_length_from_graph Caesar ciphers to break
     encrypted_text_filepath = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
-    attack_vigenere_cipher(encrypted_file_path, analyzed_key_length_from_graph)
+    # attack_vigenere_cipher(encrypted_file_path, analyzed_key_length_from_graph)
