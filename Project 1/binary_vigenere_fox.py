@@ -17,8 +17,6 @@ import os
 import matplotlib.pyplot as plt
 # For math.floor
 import math
-# For creating Z_256 distribution table
-from openpyxl import Workbook
 
 # encrypt_vigenere encrypts the text in a given filepath and outputs it to the given filepath
 # NOTE: This uses the first 256 characters of latin1, which is equivalent 
@@ -166,6 +164,8 @@ def graph_iocs(iocs):
 
 
 # get_probability_dist_of_text gets the probability density function of a typical text file
+# INPUT: value_to_increment_letter_by (int): Given value of letter to increment by for other encodings
+#        filepath_of_text_to_get_pdf_from (string): file path of text to get probability of
 # OUTPUT: [probabilities_dict (dict), letter_count_dict (dict)]: An array containing a 
 # dictionary with each extended ASCII character and the probability of that character occuring and 
 # a dictionary with the count of each letter
@@ -210,6 +210,10 @@ def get_probability_dist_of_text(value_to_increment_letter_by, filepath_of_text_
 
 # break_caesar_cipher uses the Chi-squared method to help determine the lowest Chi-squared
 # value which should correspond to the value which should crack the given cipher
+# INPUT: encrypted_text (string): string of encrypted text to break
+#        key_length (int): assumed length of keyword
+#        starting_letter_index (int): the nth letter to start at for Caesar cipher
+# OUTPUT: equivalent_ascii (char): the most likely letter or key that is used to break the cipher
 # NOTE: For project 1, it is assumed that the key is only of lowercase alphabetic letters
 def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
     text_to_be_evaluated = []
@@ -294,10 +298,8 @@ def break_caesar_cipher(encrypted_text, key_length, starting_letter_index):
     return equivalent_ascii
 
 # attack_vigenere_cipher attacks the text of a file encrypted with the Vigenere cipher
-# INPUT: encrypted_text_filepath (string): string of full filepath of a file encrypted using
-#                                          vigenere
-#        analyzed_key_length_from_graph (int): keyword length that is found by spikes of graph using 
-#                                              get_multiple_iocs
+# INPUT: encrypted_text_filepath (string): string of full filepath of a file encrypted using vigenere
+#        analyzed_key_length_from_graph (int): keyword length that is found by spikes of graph using get_multiple_iocs
 # OUTPUT: None. Only a string is printed to the console, which is the keyword
 def attack_vigenere_cipher(encrypted_text_filepath, analyzed_key_length_from_graph):
     print("Attacking file encrypted with Vigenere cipher...")
@@ -336,19 +338,19 @@ def get_text(file_path):
     return output_text
 
 
-if __name__== "__main__":
-    # Encrypting file
-    file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
+if __name__ == "__main__":
+    #### Encrypting file ####
+    # file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\MansNotHot.txt"
     file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
     encryption_key='pineapple'
-    # [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file.txt")
+    [unencrypted_text, encrypted_text] = encrypt_vigenere(text_file_path=file_path, key=encryption_key, output_file_name="fox_encrypted_vigenere_file_the_lottery.txt")
 
-    # Decrypting file
-    encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\fox_encrypted_vigenere_file.txt"
+    #### Decrypting file ####
+    # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\fox_encrypted_vigenere_file.txt"
     # encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
     encrypted_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\message_to_decrypt_from_teammate.txt"
     encryption_key="greatgatsby"
-    # decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_teammate_text.txt")
+    decrypt_vigenere(filepath_of_encrypted=encrypted_file_path, key=encryption_key, output_file_name="fox_decrypted_teammate_text.txt")
 
     # Obtaining probability distribution of a typical text
     typical_text = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\The_Lottery_Shirley_Jackson.txt"
@@ -364,35 +366,22 @@ if __name__== "__main__":
         print("{:<8} |{:<10} |{:<10}".format(k, round(v, 7), i))
         i = i + 1
     
-    # Get most common values
+    # Get characters with the highest probability
     from collections import Counter
-    k = Counter(probabilities_dict)
+    counter = Counter(probabilities_dict)
 
-    # Finding 3 highest values
-    high = k.most_common(8)
+    # Find 8 most common characters
+    highest_values = counter.most_common(8)
 
-    print("Dictionary with 3 highest values:")
+    print("Dictionary with 8 highest values:")
     print("Keys: Values")
 
-    for i in high:
-        print(i[0], " :", i[1], " ")
+    for val in highest_values:
+        print(val[0], " :", val[1], " ")
 
     # table_file = open(r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\typical_256_distribution.txt", "w", encoding="latin1")
     # Write probabilities_dict to text so that it can be easily converted to a table in Excel/Google Sheets
     # filename = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\typical_256_distributionxl.txt"
-
-    # workbook = Workbook()
-    # sheet = workbook.active
-    # # sheet["A1"] = "hello"
-    # # sheet["B1"] = "world!"
-    # i = 1
-    # for key, value in probabilities_dict.items():
-    #     print("key == " + str(key))
-    #     sheet["A" + str(i)] = str(key)
-    #     sheet["B" + str(i)] = str(value)
-    #     i = i + 1
-    #     # table_file.write(str(key) + "\t" + str(value) + "\n")
-    # workbook.save(filename=filename)
 
     # table_file.close()    
     # Pretty printing probabilities dict:
@@ -415,4 +404,4 @@ if __name__== "__main__":
     # (The lowest chi-squared is most likely to be the key, although it is not guaranteed)
     # There are thus analyzed_key_length_from_graph Caesar ciphers to break
     encrypted_text_filepath = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 1\encrypted.txt"
-    # attack_vigenere_cipher(encrypted_file_path, analyzed_key_length_from_graph)
+    attack_vigenere_cipher(encrypted_file_path, analyzed_key_length_from_graph)
