@@ -1,6 +1,6 @@
 # Aaron Fox
 # Project 1 (Binary Vigenere Crypto System)
-# CECS 564
+# CECS 564-01
 # Dr. Desoky
 # This file can encrypt, decrypt, and attack files encrypted with the Vigenere cipher system with or without an input keyword
 # NOTE: The encoding here uses extended ASCII-256 encoding based on the first 256 characters latin1 (iso-8859-1) encoding found at:
