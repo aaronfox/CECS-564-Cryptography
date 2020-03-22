@@ -3,6 +3,11 @@
 # Spring 2020
 # Dr Desoky
 
+# Prototype Linear Feedback Shift Register method that will
+# be replaced by the generator method below it
+# INPUT: taps: The equivalent primitive polynomial used (e.g. for polynomial x^15 + x + 1, taps=[15, 1])
+#        seed: Seed of LSFR to be used in binary, e.g. 40 bit key of '0001100111100110000000110100000000001100'
+# OUTPUT: None (just prints)
 def LFSR(taps, seed):
     s = seed
     xor_output = 0
@@ -29,9 +34,11 @@ def LFSR(taps, seed):
     print("Cycle length: " + str(cycle_length))
 
 
-# Generator function so state of local variables is saved and can 
-# continue running but it yields the next shifted bit to be used
-# by the full adder
+# Generator function so state of local variables is saved and can y
+# yields the next shifted bit to be used by the full adder
+# INPUT: taps: The equivalent primitive polynomial used (e.g. for polynomial x^15 + x + 1, taps=[15, 1])
+#        seed: Seed of LSFR to be used in binary, e.g. 40 bit key of '0001100111100110000000110100000000001100'
+# OUTPUT: The next shifted bit of the generator, taking acount current place and state of all local variables
 def LFSR_generator(taps, seed):
     s = seed
     xor_output = 0
@@ -67,14 +74,14 @@ def binary_to_decimal(binary):
 # binary_to_decimal(101)
 # Code for 8 bit full adder STARTS here
 
-# Half adder to be used in full adder
+# Half adder implementation in Python to be used in full adder
 # INPUT: Two bits to be half-added
 # OUTPUT: Tuple (sum, carry bit)
 # NOTE: ^ is bitwise XOR operator
 def half_adder(bit_1, bit_2):
     return (bit_1 ^ bit_2, bit_1 and bit_2)
 
-# Full 
+# Full adder implementation in Python using half adders
 # INPUT: two bits to be full-added and an optional carry bit which defaults to 0
 # OUTPUT: Tuple (sum, carry bit)
 def full_adder(bit_1, bit_2, carry_bit=0):
@@ -85,6 +92,8 @@ def full_adder(bit_1, bit_2, carry_bit=0):
 
 # Adds to bits of the same length together, rolling over if needed
 # This is named 'x_bit_full_adder' because it works for bits of any x length
+# INPUT: bits_1 (and bits_2): string of binary bits
+# OUTPUT: Resulting binary string of the result of the X bit full adder
 def x_bit_full_adder(bits_1, bits_2):
     # Initial carry bit is 0 per CSS Project 2 prompt
     carry_bit = 0
@@ -98,7 +107,7 @@ def x_bit_full_adder(bits_1, bits_2):
 
 # Code for 8 bit full adder ENDS here
 
-# Converts bytes to binary numbers and adds padding to numbers if needed
+# convert_bytes_to_binary_number onverts bytes to binary numbers and adds padding to numbers if needed
 # INPUT: list of bytes to convert to binary, e.g. list of bytes of [25, 230, 3, 64, 12]
 #        converts to 0001100111100110000000110100000000001100 in binary
 # OUTPUT: a 40 bit binary string
@@ -129,7 +138,8 @@ def xor_binary(binary_1, binary_2):
 # encrypt_css encrypts a given text using a key and 2 LFSRs per the Content Scrambling System
 # tecnhique described in the question prompt
 # INPUT: key: 40 bits long, or 5 bytes, each byte 0-255, separated by commas in a list e.g. [243, 22, 49, 105, 6]
-# OUTPUT: The encrypted text is written to a binary file for decrypting later
+#        text_to_encrypt: a string of text to be encrypted
+# OUTPUT: (None) The encrypted text is written to a binary file for decrypting later
 def encrypt_css(key, text_to_encrypt):
     binary_40_bit_key = convert_bytes_to_binary_number([25, 230, 3, 64, 12])
     # First 2 bytes (first 16 bits) are to be used in first LSFR
@@ -180,8 +190,8 @@ file_to_encrypt.close()
 encrypt_css([243, 22, 49, 105, 6], text_to_encrypt)
 
 # Decrypting text
-# To decrypt, simply encrypt again since the key is always involutary
-# since XOR(XOR(key, text), key) = text per the rules of XOR
+# To decrypt, simply encrypt again since the key is always involutary since
+# XOR(XOR(key, text), key) = text per the rules of XOR
 encrypted_text_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 2\encrypted_CSS_text.txt"
 encrypted_text_file = open(encrypted_text_file_path, "r", encoding="latin1")
 encrypted_string = encrypted_text_file.read()
