@@ -2,8 +2,103 @@
 # CECS 564-01
 # Spring 2020
 # Dr Desoky
+# This file encrypts and decrypts binary files based on the Content Scrambling System cipher
+# originally devised in 1996. The encryption uses two linear-feedback shift registers (LFSR) to generate
+# pseudorandom numbers based on a seeded 40-bit key along with a full adder to add the result
+# of the pseudorandom numbers generated from those LFSRs. The result of the full adder is then 
+# XORd bitwise with the input characters (padding is added to make the inputs of size 8-bits as needed.)
+# The result of XORing each character of the text to encrypt and the full adder result is then
+# converted to its decimal equivalent which is then converted to its equivalent Unicode value 
+# that is then written to an output binary file.
 
-# Prototype Linear Feedback Shift Register method that will
+# For graphing frequency distributions
+import matplotlib.pyplot as plt
+
+# For log in Shannon Entropy and sqrt for standard deviation
+import math
+
+# get_index_of_coincidence returns the index of coincidence (IOC) of a text
+def get_index_of_coincidence(text):
+    # Calculate frequency of each char
+    char_frequency = {}
+    for i in range(256):
+        char_frequency[chr(i)] = 0
+
+    for char in text:
+        char_frequency[char] = char_frequency[char] + 1
+
+    sum = 0
+    N = len(text)
+    for key in char_frequency.keys():
+        sum = sum + (char_frequency[key] * (char_frequency[key] - 1))
+
+    return sum / (N * (N - 1))
+
+# For getting the mean of text
+def get_mean_of_text(text):
+    sum = 0
+    count = 0
+    for char in text:
+        sum = sum + ord(char)
+        count = count + 1
+    
+    return sum / count
+
+# For calculating Shannon Entropy of text
+def get_shannon_entropy(text):
+    count = 0
+    dict = {}
+    for char in text:
+        count = count + 1
+        if char not in dict:
+            dict[char] = 1
+        else:
+            dict[char] = dict[char] + 1
+
+    # get probability of each letter occurring of each letter
+    for key in dict.keys():
+        dict[key] = dict[key] / count
+
+    # sort dictionary
+    dict = {k: v for k, v in sorted(dict.items(), key=lambda item: item[0])}
+
+    running_sum = 0
+    for key in dict.keys():
+        running_sum = running_sum + dict[key] * math.log(dict[key], 2)
+
+    return -1 * running_sum
+
+
+# For obtaining standard deviation of text
+def get_stand_dev_of_text(text):
+
+    mean = get_mean_of_text(text)
+    running_sum = 0
+    count = 0
+    for char in text:
+        running_sum = running_sum + (ord(char) - mean) ** 2
+        count = count + 1
+    return math.sqrt(running_sum / count)
+
+# For graphing the character distribution
+def graph_char_distribution(text):
+    dict = {}
+    for char in text:
+        if char not in dict:
+            dict[char] = 1
+        else:
+            dict[char] = dict[char] + 1
+    
+    # sort dictionary
+    dict = {k: v for k, v in sorted(dict.items(), key=lambda item: item[0])}
+
+    plt.bar(dict.keys(), dict.values())
+    plt.xlabel('Character')
+    plt.ylabel('Frequency')
+    plt.title('Frequency Distribution of Characters')
+    plt.show()
+
+# Prototype Linear-Feedback Shift Register method that will
 # be replaced by the generator method below it
 # INPUT: taps: The equivalent primitive polynomial used (e.g. for polynomial x^15 + x + 1, taps=[15, 1])
 #        seed: Seed of LSFR to be used in binary, e.g. 40 bit key of '0001100111100110000000110100000000001100'
@@ -43,7 +138,7 @@ def LFSR_generator(taps, seed):
     s = seed
     xor_output = 0
     yield s[len(s)-1]
-    while 1:#(s != seed or init_pass == 0):  # and cycle_length < 5:
+    while 1:
         for tap in taps:
             xor_output = xor_output + int(s[len(s)-tap])
         if xor_output % 2 == 0.0:
@@ -155,8 +250,8 @@ def encrypt_css(key, text_to_encrypt):
     # Therefore LSFR 2 is 25 bits long, as CSS prompt specifies
     intialization_key_for_LSFR_2 = intialization_key_for_LSFR_2 + '1'
 
-    LSFR_1_generator = LFSR_generator((15, 1), intialization_key_for_LSFR_1)
-    LSFR_2_generator = LFSR_generator((15, 5, 4, 1), intialization_key_for_LSFR_2)
+    LFSR_1_generator = LFSR_generator((15, 1), intialization_key_for_LSFR_1)
+    LFSR_2_generator = LFSR_generator((15, 5, 4, 1), intialization_key_for_LSFR_2)
 
     # Printing out text
     if len(text_to_encrypt) > 25:
@@ -169,13 +264,13 @@ def encrypt_css(key, text_to_encrypt):
     encrypted_file = open(output_file_name, "w", encoding="latin1")
     # Initial carry bit of full adder is 0
     # For every character in text, get next shifted 8 bits from both registers
-    for char in text_to_encrypt:
+    for char in text_to_encrypt:# LEFT OFF HERE
         # Get 8 binary bits 
         register_1_binary = ''
         register_2_binary = ''
         for i in range(8):
-            register_1_binary = register_1_binary + str(next(LSFR_1_generator))
-            register_2_binary = register_2_binary + str(next(LSFR_2_generator))
+            register_1_binary = register_1_binary + str(next(LFSR_1_generator))
+            register_2_binary = register_2_binary + str(next(LFSR_2_generator))
 
         
         full_adder_result = x_bit_full_adder(register_1_binary, register_2_binary)
@@ -210,8 +305,8 @@ def decrypt_css(key, text_to_decrypt):
     # Therefore LSFR 2 is 25 bits long, as CSS prompt specifies
     intialization_key_for_LSFR_2 = intialization_key_for_LSFR_2 + '1'
 
-    LSFR_1_generator = LFSR_generator((15, 1), intialization_key_for_LSFR_1)
-    LSFR_2_generator = LFSR_generator((15, 5, 4, 1), intialization_key_for_LSFR_2)
+    LFSR_1_generator = LFSR_generator((15, 1), intialization_key_for_LSFR_1)
+    LFSR_2_generator = LFSR_generator((15, 5, 4, 1), intialization_key_for_LSFR_2)
     if len(text_to_decrypt) > 25:
         print("text_to_decrypt == " + text_to_decrypt[0:20] + "...")
     else:
@@ -226,8 +321,8 @@ def decrypt_css(key, text_to_decrypt):
         register_1_binary = ''
         register_2_binary = ''
         for i in range(8):
-            register_1_binary = register_1_binary + str(next(LSFR_1_generator))
-            register_2_binary = register_2_binary + str(next(LSFR_2_generator))
+            register_1_binary = register_1_binary + str(next(LFSR_1_generator))
+            register_2_binary = register_2_binary + str(next(LFSR_2_generator))
         
         full_adder_result = x_bit_full_adder(register_1_binary, register_2_binary)
         # Encryption and decryption are done by bitxor of input bytes with the keystream bytes
@@ -243,18 +338,33 @@ def decrypt_css(key, text_to_decrypt):
 
 # Encrypting text
 text_file_path = r'C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 2\helloworld.txt'
+text_file_path = r'C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 2\The_Lottery_Shirley_Jackson.txt'
+# text_file_path = r'C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 2\Darwin.txt'
+
 file_to_encrypt = open(text_file_path, 'r', encoding='latin1')
 text_to_encrypt = file_to_encrypt.read()
+# graph_char_distribution(text_to_encrypt)
+print('unencrypted text mean == ' + str(get_mean_of_text(text_to_encrypt)))
+print('unencrypted text std dev == ' + str(get_stand_dev_of_text(text_to_encrypt)))
+print("unencrypted text shannon entropy == " + str(get_shannon_entropy(text_to_encrypt)))
+print("IOC of unencrypted text == " + str(get_index_of_coincidence(text_to_encrypt)))
+
+
 file_to_encrypt.close()
-encrypt_css([25, 230, 3, 64, 12], text_to_encrypt)
+encrypt_css([243, 22, 49, 105, 6], text_to_encrypt)
 # Key: [25, 230, 3, 64, 12]
 
 # Decrypting text
-# To decrypt, simply encrypt again since the key is always involutary since
+# To decrypt, simply encrypt again since the key is always involutory since
 # XOR(XOR(key, text), key) = text per the rules of XOR
 encrypted_text_file_path = r"C:\Users\aaron\Classes_11th_Semester\CECS 564\CECS-564-Cryptography\Project 2\encrypted_CSS_text.txt"
 encrypted_text_file = open(encrypted_text_file_path, "r", encoding="latin1")
 encrypted_string = encrypted_text_file.read()
+# graph_char_distribution(encrypted_string)
+print('encrypted text mean == ' + str(get_mean_of_text(encrypted_string)))
+print('encrypted text std dev == ' + str(get_stand_dev_of_text(encrypted_string)))
+print("encrypted text shannon entropy == " + str(get_shannon_entropy(encrypted_string)))
+print("IOC of encrypted text == " + str(get_index_of_coincidence(encrypted_string)))
 encrypted_text_file.close()
 decrypt_css([243, 22, 49, 105, 6], encrypted_string)
 
