@@ -352,7 +352,6 @@ print("IOC of unencrypted text == " + str(get_index_of_coincidence(text_to_encry
 
 file_to_encrypt.close()
 encrypt_css([243, 22, 49, 105, 6], text_to_encrypt)
-# Key: [25, 230, 3, 64, 12]
 
 # Decrypting text
 # To decrypt, simply encrypt again since the key is always involutory since
